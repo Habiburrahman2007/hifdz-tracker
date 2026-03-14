@@ -777,7 +777,7 @@
                 @endif
                 --}}
                 <!-- Static Logo -->
-                <img src="{{ asset('img/logo.png') }}" class="shadow-sm border border-gray-100" alt="Logo" style="width:50px;height:50px;object-fit:contain;border-radius:8px;background:white;">
+                <img src="{{ asset('img/logo.png') }}" class="shadow-sm border border-gray-100" alt="Logo" style="width:50px;height:50px;object-fit:contain;border-radius:8px;">
                 <div class="logo-text">
                     <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
                     <span>Sistem Manajemen Tahfidz</span>
