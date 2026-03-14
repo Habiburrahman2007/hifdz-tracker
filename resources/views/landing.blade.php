@@ -35,10 +35,10 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased font-sans selection:bg-islamic-green selection:text-white">
 
-    <!-- Header / Navbar -->
-    <header class="fixed w-full bg-white/90 backdrop-blur-md border-b border-gray-100 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+    <!-- Header / Navbar (Floating Oval) -->
+    <div class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-300">
+        <header class="w-full max-w-5xl bg-white/90 backdrop-blur-md border border-gray-100/50 shadow-lg shadow-gray-200/50 rounded-full px-6 transition-all">
+            <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-2">
                     <img src="{{ asset('img/logo.png') }}" class="w-24 h-24 object-contain" alt="Hifdz Tracker Logo">
                     <span class="font-bold text-xl text-gray-900 tracking-tight">Hifdz Tracker</span>
@@ -54,8 +54,8 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
+    </div>
 
     <!-- 1. Hero Section -->
     <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-islamic-light overflow-hidden relative">
