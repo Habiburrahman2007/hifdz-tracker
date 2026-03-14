@@ -39,9 +39,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-islamic-green rounded-xl flex items-center justify-center text-white font-bold text-xl">
-                        H
-                    </div>
+                    <img src="{{ asset('img/logo.png') }}" class="w-10 h-10 object-contain" alt="Hifdz Tracker Logo">
                     <span class="font-bold text-xl text-gray-900 tracking-tight">Hifdz Tracker</span>
                 </div>
                 <nav class="hidden md:flex space-x-8">
@@ -399,9 +397,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-gray-800">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 bg-islamic-green rounded-lg flex items-center justify-center text-white font-bold">
-                            H
-                        </div>
+                        <img src="{{ asset('img/logo.png') }}" class="w-8 h-8 object-contain bg-white rounded-lg p-1" alt="Hifdz Tracker Logo">
                         <span class="font-bold text-xl text-white">Hifdz Tracker</span>
                     </div>
                     <p class="text-gray-400 max-w-sm">Membantu pesantren mencatat dan memantau perkembangan hafalan santri secara terorganisir.</p>

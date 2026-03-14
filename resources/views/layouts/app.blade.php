@@ -771,7 +771,7 @@
                 @if($logo)
                     <img src="{{ Storage::url($logo) }}" alt="Logo" style="width:46px;height:46px;object-fit:cover;border-radius:12px;">
                 @else
-                    <div class="logo-icon">📖</div>
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:46px;height:46px;object-fit:contain;border-radius:12px;background:white;padding:2px;">
                 @endif
                 <div class="logo-text">
                     <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
