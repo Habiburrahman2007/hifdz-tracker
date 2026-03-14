@@ -8,8 +8,11 @@ use App\Http\Controllers\SetoranController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', function () {
+    return view('landing');
+});
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::resource('teachers', TeacherController::class)->except(['show']);
 Route::resource('students', StudentController::class)->except(['show']);
 Route::resource('setoran', SetoranController::class)->except(['show']);
