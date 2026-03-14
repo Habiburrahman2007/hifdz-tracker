@@ -39,7 +39,7 @@
     <header class="fixed w-full bg-white/90 backdrop-blur-md border-b border-gray-100 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
+                <div class="flex items-center gap-2">
                     <img src="{{ asset('img/logo.png') }}" class="w-48 h-48 object-contain" alt="Hifdz Tracker Logo">
                     <span class="font-bold text-xl text-gray-900 tracking-tight">Hifdz Tracker</span>
                 </div>
