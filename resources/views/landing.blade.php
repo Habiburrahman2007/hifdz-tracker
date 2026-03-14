@@ -335,7 +335,7 @@
     <!-- 6. Testimonials Section (Interactive) -->
     <section id="testimoni" class="py-24 md:py-32 bg-[#050505] text-white cursor-pointer select-none relative overflow-hidden group" onclick="nextTestimonial()">
         <!-- Subtle gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#c2847a]/5 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-islamic-green/10 to-transparent pointer-events-none"></div>
         
         <div class="max-w-4xl mx-auto px-6 lg:px-8 flex flex-col justify-between min-h-[480px] relative z-10 transition-transform duration-700 ease-out group-hover:scale-[1.01]">
             
@@ -345,37 +345,37 @@
                 <div class="flex -space-x-3 items-center" id="testi-thumbs"></div>
                 
                 <!-- Counter -->
-                <div class="text-xl font-mono tracking-widest text-[#555] font-semibold flex items-center gap-2">
-                    <span class="text-white text-2xl font-bold" id="testi-current">01</span> 
+                <div class="text-xl font-mono tracking-widest text-white/50 font-semibold flex items-center gap-2">
+                    <span class="text-islamic-gold text-2xl font-bold" id="testi-current">01</span> 
                     <span class="text-sm">/ 03</span>
                 </div>
             </div>
 
             <!-- Quote Text -->
             <div class="max-w-3xl mb-16 min-h-[140px] flex items-center">
-                <h2 class="text-3xl md:text-[2.6rem] font-light leading-snug text-[rgba(255,255,255,0.92)] transition-opacity duration-300" id="testi-quote" style="opacity: 0;"></h2>
+                <h2 class="text-3xl md:text-[2.6rem] font-light leading-snug text-[rgba(255,255,255,0.92)] transition-opacity duration-300 opacity-100" id="testi-quote"></h2>
             </div>
 
             <!-- Author Info -->
-            <div class="flex items-center gap-5 transition-opacity duration-300" id="testi-author-container" style="opacity: 0;">
-                <div class="w-[68px] h-[68px] rounded-full p-[3px] border border-[#c2847a]/40 bg-[#050505] relative flex-shrink-0">
-                    <div class="absolute inset-0 border border-[#c2847a] rounded-full scale-105 opacity-0 group-hover:opacity-30 group-hover:scale-110 transition-all duration-700"></div>
+            <div class="flex items-center gap-5 transition-opacity duration-300 opacity-100" id="testi-author-container">
+                <div class="w-[68px] h-[68px] rounded-full p-[3px] border border-islamic-gold/40 bg-[#050505] relative flex-shrink-0">
+                    <div class="absolute inset-0 border border-islamic-gold rounded-full scale-105 opacity-0 group-hover:opacity-30 group-hover:scale-110 transition-all duration-700"></div>
                     <img id="testi-author-img" src="" class="w-full h-full rounded-full object-cover grayscale opacity-90" alt="Author">
                 </div>
-                <div class="pl-4 border-l border-[#c2847a]/60">
+                <div class="pl-4 border-l border-islamic-gold/60">
                      <h4 class="text-lg md:text-xl font-semibold text-white tracking-wide mb-1" id="testi-author-name"></h4>
-                     <p class="text-[10px] md:text-xs tracking-[0.25em] text-[#777] uppercase font-bold" id="testi-author-role"></p>
+                     <p class="text-[10px] md:text-xs tracking-[0.25em] text-islamic-gold uppercase font-bold" id="testi-author-role"></p>
                 </div>
             </div>
             
             <!-- Bottom Elements -->
             <div class="mt-16 w-full relative">
                 <!-- Progress Line -->
-                <div class="w-full h-[1px] bg-[#222]">
-                    <div class="h-full bg-[#c2847a] transition-all duration-500 ease-out" id="testi-progress" style="width: 0%;"></div>
+                <div class="w-full h-[1px] bg-white/10">
+                    <div class="h-full bg-islamic-gold transition-all duration-500 ease-out" id="testi-progress" style="width: 0%;"></div>
                 </div>
                 <!-- Helper text -->
-                <p class="text-[10px] tracking-[0.3em] text-[#555] mt-6 font-semibold uppercase group-hover:text-[#888] transition-colors duration-300">Click Anywhere TO NEXT</p>
+                <p class="text-[10px] tracking-[0.3em] text-white/40 mt-6 font-semibold uppercase group-hover:text-islamic-light transition-colors duration-300">Click Anywhere TO NEXT</p>
             </div>
         </div>
 
@@ -401,7 +401,7 @@
                 }
             ];
             
-            let currentIdx = -1; // Initialize negative to force first render logic cleanly
+            let currentIdx = 0;
             const total = testimonialsData.length;
 
             const quoteEl = document.getElementById('testi-quote');
@@ -417,7 +417,7 @@
                 testimonialsData.forEach((t, i) => {
                     const isActive = i === currentIdx;
                     const zIndex = isActive ? 'z-20' : 'z-0';
-                    const ringClass = isActive ? 'ring-1 ring-offset-2 ring-offset-[#050505] ring-[#c2847a] border-[#c2847a]' : 'border-[#222] opacity-40 grayscale';
+                    const ringClass = isActive ? 'ring-2 ring-offset-2 ring-offset-[#050505] ring-islamic-gold border-islamic-gold' : 'border-white/20 opacity-40 grayscale';
                     
                     const wrap = document.createElement('div');
                     wrap.className = `w-10 h-10 rounded-full border-2 transition-all duration-500 \${zIndex} \${ringClass} relative overflow-hidden`;
@@ -431,49 +431,40 @@
                 });
             }
 
-            function updateTestimonial(idx) {
-                if (currentIdx === idx) return; // Prevent double trigger
-                const isFirstRender = currentIdx === -1;
-                currentIdx = idx;
-                const data = testimonialsData[idx];
+            function updateDom() {
+                const data = testimonialsData[currentIdx];
+                currentEl.innerText = String(currentIdx + 1).padStart(2, '0');
+                quoteEl.innerText = data.quote;
+                nameEl.innerText = data.name;
+                roleEl.innerText = data.role;
+                imgEl.src = data.img;
                 
-                // Content Switch Sequence
-                const updateDom = () => {
-                    currentEl.innerText = String(idx + 1).padStart(2, '0');
-                    quoteEl.innerText = data.quote;
-                    nameEl.innerText = data.name;
-                    roleEl.innerText = data.role;
-                    imgEl.src = data.img;
-                    
-                    progressEl.style.width = \`\${((idx + 1) / total) * 100}%\`;
-                    renderThumbs();
-                    
-                    // Fade In Back
-                    requestAnimationFrame(() => {
-                        quoteEl.style.opacity = '1';
-                        document.getElementById('testi-author-container').style.opacity = '1';
-                    });
-                };
+                progressEl.style.width = (((currentIdx + 1) / total) * 100) + '%';
+                renderThumbs();
+                
+                quoteEl.style.opacity = '1';
+                document.getElementById('testi-author-container').style.opacity = '1';
+            }
 
-                // For first render, skip fade out
-                if (isFirstRender) {
-                    updateDom();
-                } else {
-                    // Fade Out
-                    quoteEl.style.opacity = '0';
-                    document.getElementById('testi-author-container').style.opacity = '0';
-                    // Wait for fade out
-                    setTimeout(updateDom, 300);
-                }
+            function updateTestimonial(idx) {
+                if (currentIdx === idx && quoteEl.innerText !== '') return;
+                currentIdx = idx;
+                
+                // Fade Out
+                quoteEl.style.opacity = '0';
+                document.getElementById('testi-author-container').style.opacity = '0';
+                
+                // Wait for fade out, then update and fade in
+                setTimeout(updateDom, 300);
             }
 
             function nextTestimonial() {
                 updateTestimonial((currentIdx + 1) % total);
             }
 
-            // Init on load
+            // Init on load without fade delay
             window.addEventListener('DOMContentLoaded', () => {
-                updateTestimonial(0);
+                updateDom();
             });
         </script>
     </section>
