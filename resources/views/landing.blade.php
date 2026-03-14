@@ -158,11 +158,6 @@
                     <p class="text-gray-600 text-sm leading-relaxed">Wali santri sulit mengetahui progres hafalan anak secara realtime, karena laporan biasanya hanya turun saat pembagian raport.</p>
                 </div>
             </div>
-
-            <div class="mt-16 text-center max-w-3xl mx-auto bg-islamic-green/10 rounded-2xl p-8 border border-islamic-green/20">
-                <h3 class="text-2xl font-bold text-islamic-dark mb-4">Hifdz Tracker Mengatasi Semua Masalah Ini</h3>
-                <p class="text-gray-700">Digitalisasi pencatatan hafalan membantu Anda fokus pada hal yang paling penting: membimbing santri menghafal kalam ilahi.</p>
-            </div>
         </div>
     </section>
 
