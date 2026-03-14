@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistem Manajemen Tahfidz {{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}">
     <title>@yield('title', 'Dashboard') | {{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -771,7 +772,7 @@
                 @if($logo)
                     <img src="{{ Storage::url($logo) }}" alt="Logo" style="width:46px;height:46px;object-fit:cover;border-radius:12px;">
                 @else
-                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:46px;height:46px;object-fit:contain;border-radius:12px;background:white;padding:2px;">
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:46px;height:46px;object-fit:contain;border-radius:12px;">
                 @endif
                 <div class="logo-text">
                     <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
