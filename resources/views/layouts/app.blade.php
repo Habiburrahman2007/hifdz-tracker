@@ -769,11 +769,15 @@
         <div class="sidebar-logo">
             <div class="logo-box">
                 @php $logo = \App\Models\Setting::get('logo', ''); @endphp
+                {{-- Dynamic Logo (commented for now since storage link isn't configured)
                 @if($logo)
                     <img src="{{ Storage::url($logo) }}" alt="Logo" style="width:46px;height:46px;object-fit:cover;border-radius:12px;">
                 @else
                     <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:60px;height:60px;object-fit:contain;border-radius:12px;">
                 @endif
+                --}}
+                <!-- Static Logo -->
+                <img src="{{ asset('img/logo.png') }}" class="shadow-sm border border-gray-100" alt="Logo" style="width:50px;height:50px;object-fit:contain;border-radius:8px;background:white;">
                 <div class="logo-text">
                     <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
                     <span>Sistem Manajemen Tahfidz</span>
