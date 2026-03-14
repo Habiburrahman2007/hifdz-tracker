@@ -40,7 +40,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-2">
-                    <img src="{{ asset('img/logo.png') }}" class="w-48 h-48 object-contain" alt="Hifdz Tracker Logo">
+                    <img src="{{ asset('img/logo.png') }}" class="w-24 h-24 object-contain" alt="Hifdz Tracker Logo">
                     <span class="font-bold text-xl text-gray-900 tracking-tight">Hifdz Tracker</span>
                 </div>
                 <nav class="hidden md:flex space-x-8">
