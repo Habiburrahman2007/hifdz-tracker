@@ -89,7 +89,7 @@
                 <div class="lg:w-1/2 fade-up delay-200">
                     <div class="relative rounded-2xl bg-white shadow-2xl p-2 border border-white/50 transform rotate-1 hover:rotate-0 transition-transform duration-500">
                         <div class="absolute -inset-1 bg-gradient-to-r from-islamic-green to-islamic-gold rounded-2xl blur opacity-20"></div>
-                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaab31ce?q=80&w=1000&auto=format&fit=crop" alt="Dashboard Preview / Al Quran" class="rounded-xl relative z-10 w-full h-[400px] object-cover shadow-sm">
+                        <img src="{{ asset('img/lp.jpg') }}" alt="Dashboard Preview / Al Quran" class="rounded-xl relative z-10 w-full h-[400px] object-cover shadow-sm">
                         <!-- Dashboard UI Mock overlay -->
                         <div class="absolute bottom-4 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 flex items-center gap-4">
                             <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-islamic-green">
