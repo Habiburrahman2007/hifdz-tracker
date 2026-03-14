@@ -332,52 +332,150 @@
         </div>
     </section>
 
-    <!-- 6. Testimonials Section -->
-    <section id="testimoni" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Apa Kata Pengguna</h2>
-                <p class="text-gray-600">Dipercaya oleh berbagai lembaga pesantren dan madrasah.</p>
+    <!-- 6. Testimonials Section (Interactive) -->
+    <section id="testimoni" class="py-24 md:py-32 bg-[#050505] text-white cursor-pointer select-none relative overflow-hidden group" onclick="nextTestimonial()">
+        <!-- Subtle gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#c2847a]/5 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 flex flex-col justify-between min-h-[480px] relative z-10 transition-transform duration-700 ease-out group-hover:scale-[1.01]">
+            
+            <!-- Top bar: Thumbnails & Counter -->
+            <div class="flex justify-between items-center mb-16">
+                <!-- Thumbnails container -->
+                <div class="flex -space-x-3 items-center" id="testi-thumbs"></div>
+                
+                <!-- Counter -->
+                <div class="text-xl font-mono tracking-widest text-[#555] font-semibold flex items-center gap-2">
+                    <span class="text-white text-2xl font-bold" id="testi-current">01</span> 
+                    <span class="text-sm">/ 03</span>
+                </div>
+            </div>
+
+            <!-- Quote Text -->
+            <div class="max-w-3xl mb-16 min-h-[140px] flex items-center">
+                <h2 class="text-3xl md:text-[2.6rem] font-light leading-snug text-[rgba(255,255,255,0.92)] transition-opacity duration-300" id="testi-quote" style="opacity: 0;"></h2>
+            </div>
+
+            <!-- Author Info -->
+            <div class="flex items-center gap-5 transition-opacity duration-300" id="testi-author-container" style="opacity: 0;">
+                <div class="w-[68px] h-[68px] rounded-full p-[3px] border border-[#c2847a]/40 bg-[#050505] relative flex-shrink-0">
+                    <div class="absolute inset-0 border border-[#c2847a] rounded-full scale-105 opacity-0 group-hover:opacity-30 group-hover:scale-110 transition-all duration-700"></div>
+                    <img id="testi-author-img" src="" class="w-full h-full rounded-full object-cover grayscale opacity-90" alt="Author">
+                </div>
+                <div class="pl-4 border-l border-[#c2847a]/60">
+                     <h4 class="text-lg md:text-xl font-semibold text-white tracking-wide mb-1" id="testi-author-name"></h4>
+                     <p class="text-[10px] md:text-xs tracking-[0.25em] text-[#777] uppercase font-bold" id="testi-author-role"></p>
+                </div>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="text-islamic-gold mb-4">
-                            <svg class="h-8 w-8 text-islamic-gold/40" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
-                        </div>
-                        <p class="text-gray-700 text-lg mb-6 italic">"Sejak menggunakan Hifdz Tracker, pencatatan hafalan santri menjadi jauh lebih rapi dan mudah dipantau."</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-islamic-green/10 rounded-full flex items-center justify-center text-islamic-green font-bold text-xl">
-                            A
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Ustadz Ahmad</p>
-                            <p class="text-sm text-gray-500">Pengajar Tahfidz</p>
-                        </div>
-                    </div>
+            <!-- Bottom Elements -->
+            <div class="mt-16 w-full relative">
+                <!-- Progress Line -->
+                <div class="w-full h-[1px] bg-[#222]">
+                    <div class="h-full bg-[#c2847a] transition-all duration-500 ease-out" id="testi-progress" style="width: 0%;"></div>
                 </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="text-islamic-gold mb-4">
-                            <svg class="h-8 w-8 text-islamic-gold/40" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
-                        </div>
-                        <p class="text-gray-700 text-lg mb-6 italic">"Aplikasi ini sangat membantu kami dalam memonitor perkembangan hafalan santri setiap hari."</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-islamic-green/10 rounded-full flex items-center justify-center text-islamic-green font-bold text-xl">
-                            P
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Pengurus Pesantren</p>
-                            <p class="text-sm text-gray-500">Yayasan Pendidikan Islam</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Helper text -->
+                <p class="text-[10px] tracking-[0.3em] text-[#555] mt-6 font-semibold uppercase group-hover:text-[#888] transition-colors duration-300">Click Anywhere TO NEXT</p>
             </div>
         </div>
+
+        <script>
+            const testimonialsData = [
+                {
+                    quote: "The attention to detail is unmatched. Every interaction feels intentional and greatly impacts our daily tracking.",
+                    name: "Ustadz Ahmad",
+                    role: "PENGAJAR TAHFIDZ — YAYASAN DARUL ILMI",
+                    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop"
+                },
+                {
+                    quote: "Aplikasi ini sangat membantu kami dalam memonitor perkembangan hafalan santri setiap hari.",
+                    name: "Muhammad Ali",
+                    role: "PENGURUS PESANTREN — AS-SUNNAH",
+                    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop"
+                },
+                {
+                    quote: "Data hafalan kini terarsip dengan aman dan pencarian riwayat setoran menjadi sangat praktis.",
+                    name: "Ustadz Yusuf",
+                    role: "KEPALA MADRASAH — ALIYAH NEGERI",
+                    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&auto=format&fit=crop"
+                }
+            ];
+            
+            let currentIdx = -1; // Initialize negative to force first render logic cleanly
+            const total = testimonialsData.length;
+
+            const quoteEl = document.getElementById('testi-quote');
+            const nameEl = document.getElementById('testi-author-name');
+            const roleEl = document.getElementById('testi-author-role');
+            const imgEl = document.getElementById('testi-author-img');
+            const currentEl = document.getElementById('testi-current');
+            const progressEl = document.getElementById('testi-progress');
+            const thumbsContainer = document.getElementById('testi-thumbs');
+
+            function renderThumbs() {
+                thumbsContainer.innerHTML = '';
+                testimonialsData.forEach((t, i) => {
+                    const isActive = i === currentIdx;
+                    const zIndex = isActive ? 'z-20' : 'z-0';
+                    const ringClass = isActive ? 'ring-1 ring-offset-2 ring-offset-[#050505] ring-[#c2847a] border-[#c2847a]' : 'border-[#222] opacity-40 grayscale';
+                    
+                    const wrap = document.createElement('div');
+                    wrap.className = `w-10 h-10 rounded-full border-2 transition-all duration-500 \${zIndex} \${ringClass} relative overflow-hidden`;
+                    
+                    const img = document.createElement('img');
+                    img.src = t.img;
+                    img.className = 'w-full h-full object-cover';
+                    
+                    wrap.appendChild(img);
+                    thumbsContainer.appendChild(wrap);
+                });
+            }
+
+            function updateTestimonial(idx) {
+                if (currentIdx === idx) return; // Prevent double trigger
+                const isFirstRender = currentIdx === -1;
+                currentIdx = idx;
+                const data = testimonialsData[idx];
+                
+                // Content Switch Sequence
+                const updateDom = () => {
+                    currentEl.innerText = String(idx + 1).padStart(2, '0');
+                    quoteEl.innerText = data.quote;
+                    nameEl.innerText = data.name;
+                    roleEl.innerText = data.role;
+                    imgEl.src = data.img;
+                    
+                    progressEl.style.width = \`\${((idx + 1) / total) * 100}%\`;
+                    renderThumbs();
+                    
+                    // Fade In Back
+                    requestAnimationFrame(() => {
+                        quoteEl.style.opacity = '1';
+                        document.getElementById('testi-author-container').style.opacity = '1';
+                    });
+                };
+
+                // For first render, skip fade out
+                if (isFirstRender) {
+                    updateDom();
+                } else {
+                    // Fade Out
+                    quoteEl.style.opacity = '0';
+                    document.getElementById('testi-author-container').style.opacity = '0';
+                    // Wait for fade out
+                    setTimeout(updateDom, 300);
+                }
+            }
+
+            function nextTestimonial() {
+                updateTestimonial((currentIdx + 1) % total);
+            }
+
+            // Init on load
+            window.addEventListener('DOMContentLoaded', () => {
+                updateTestimonial(0);
+            });
+        </script>
     </section>
 
     <!-- 7. Final CTA Section -->
