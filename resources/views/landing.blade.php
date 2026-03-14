@@ -162,67 +162,68 @@
     </section>
 
     <!-- 3. Features Section -->
-    <section id="fitur" class="py-24 bg-gray-50 border-y border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="fitur" class="py-24 bg-islamic-dark text-white border-y border-gray-100 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <span class="text-islamic-gold font-bold tracking-wider uppercase text-sm">Solusi Digital</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Fitur Utama Hifdz Tracker</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">Fitur Utama Hifdz Tracker</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-islamic-green/30 transition-all duration-300">
-                    <div class="w-12 h-12 bg-islamic-light text-islamic-green rounded-xl flex items-center justify-center mb-6">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-white/10 hover:bg-white/15 transition-all duration-300">
+                    <div class="w-12 h-12 bg-islamic-gold/20 text-islamic-gold rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Manajemen Data Santri</h3>
-                    <p class="text-gray-600">Kelola data santri dengan mudah dalam satu dashboard terpusat tanpa ribet.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Manajemen Data Santri</h3>
+                    <p class="text-gray-300">Kelola data santri dengan mudah dalam satu dashboard terpusat tanpa ribet.</p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-islamic-green/30 transition-all duration-300">
-                    <div class="w-12 h-12 bg-islamic-light text-islamic-green rounded-xl flex items-center justify-center mb-6">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-white/10 hover:bg-white/15 transition-all duration-300">
+                    <div class="w-12 h-12 bg-islamic-gold/20 text-islamic-gold rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pencatatan Setoran Hafalan</h3>
-                    <p class="text-gray-600">Catat setoran hafalan santri secara cepat dan terstruktur setiap hari beserta kualitas bacaannya.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Pencatatan Setoran Hafalan</h3>
+                    <p class="text-gray-300">Catat setoran hafalan santri secara cepat dan terstruktur setiap hari beserta kualitas bacaannya.</p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-islamic-green/30 transition-all duration-300">
-                    <div class="w-12 h-12 bg-islamic-light text-islamic-green rounded-xl flex items-center justify-center mb-6">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-white/10 hover:bg-white/15 transition-all duration-300">
+                    <div class="w-12 h-12 bg-islamic-gold/20 text-islamic-gold rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Monitoring Progres Hafalan</h3>
-                    <p class="text-gray-600">Lihat perkembangan hafalan santri secara visual dan terorganisir melalu metrik intuitif.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Monitoring Progres Hafalan</h3>
+                    <p class="text-gray-300">Lihat perkembangan hafalan santri secara visual dan terorganisir melalu metrik intuitif.</p>
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-islamic-green/30 transition-all duration-300">
-                    <div class="w-12 h-12 bg-islamic-light text-islamic-green rounded-xl flex items-center justify-center mb-6">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-white/10 hover:bg-white/15 transition-all duration-300">
+                    <div class="w-12 h-12 bg-islamic-gold/20 text-islamic-gold rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Riwayat Hafalan Lengkap</h3>
-                    <p class="text-gray-600">Semua catatan setoran tersimpan rapi selamanya dan dapat diakses kapan saja.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Riwayat Hafalan Lengkap</h3>
+                    <p class="text-gray-300">Semua catatan setoran tersimpan rapi selamanya dan dapat diakses kapan saja.</p>
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-islamic-green/30 transition-all duration-300">
-                    <div class="w-12 h-12 bg-islamic-light text-islamic-green rounded-xl flex items-center justify-center mb-6">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-white/10 hover:bg-white/15 transition-all duration-300">
+                    <div class="w-12 h-12 bg-islamic-gold/20 text-islamic-gold rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Dashboard Ustadz/Ustadzah</h3>
-                    <p class="text-gray-600">Interface sederhana untuk memudahkan guru memonitor hafalan santrinya masing-masing.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Dashboard Ustadz/Ustadzah</h3>
+                    <p class="text-gray-300">Interface sederhana untuk memudahkan guru memonitor hafalan santrinya masing-masing.</p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-islamic-green to-islamic-dark p-8 rounded-3xl shadow-md text-white flex flex-col justify-center relative overflow-hidden">
-                    <div class="absolute -right-10 -top-10 opacity-10">
+                <div class="bg-gradient-to-br from-islamic-gold to-yellow-600 p-8 rounded-3xl shadow-md text-white flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 opacity-20 text-white">
                          <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 relative z-10">Lebih Terstruktur</h3>
-                    <p class="text-islamic-light mb-6 relative z-10">Eksplorasi semua kemampuan platform kami secara langsung.</p>
-                    <a href="{{ route('dashboard') }}" class="inline-flex items-center text-islamic-gold font-semibold hover:text-white transition-colors relative z-10">
-                        Coba Fitur Sekarang <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <h3 class="text-2xl font-bold mb-3 relative z-10 text-white">Lebih Terstruktur</h3>
+                    <p class="text-white/90 mb-6 relative z-10">Eksplorasi semua kemampuan platform kami secara langsung.</p>
+                    <a href="{{ route('dashboard') }}" class="inline-flex items-center text-white font-bold hover:text-white/80 transition-colors relative z-10 group">
+                        Coba Fitur Sekarang <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
             </div>
