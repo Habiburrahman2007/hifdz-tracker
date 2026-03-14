@@ -113,42 +113,49 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">Sistem konvensional seringkali membatasi potensi pengawasan secara maksimal.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl">
-                    <div class="mt-1 bg-red-100 p-2 rounded-lg text-red-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <div class="grid md:grid-cols-2 gap-x-8 gap-y-16 max-w-4xl mx-auto mt-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-3xl p-8 pt-12 relative shadow-lg shadow-gray-200/50 border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2">
+                        <div class="w-16 h-16 bg-red-50 border-4 border-white rounded-full flex items-center justify-center text-red-500 shadow-md">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Pencatatan setoran masih manual di buku</h3>
-                        <p class="text-gray-600 text-sm">Rentan terselip, rusak, atau sulit direkapitulasi secara berkala.</p>
-                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Pencatatan setoran manual</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Rentan terselip, rusak, atau sulit direkapitulasi secara berkala karena semua bertumpuk dalam satu buku.</p>
                 </div>
-                <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl">
-                    <div class="mt-1 bg-red-100 p-2 rounded-lg text-red-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-3xl p-8 pt-12 relative shadow-lg shadow-gray-200/50 border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2">
+                        <div class="w-16 h-16 bg-islamic-gold/10 border-4 border-white rounded-full flex items-center justify-center text-islamic-gold shadow-md">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Sulit memantau perkembangan hafalan setiap santri</h3>
-                        <p class="text-gray-600 text-sm">Tidak ada visualisasi grafik progres yang memadai untuk melihat capaian per minggu atau bulan.</p>
-                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Sulit memantau perkembangan</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Tidak ada visualisasi grafik progres yang memadai untuk melihat capaian kecepatan hafalan per minggu atau bulan.</p>
                 </div>
-                <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl">
-                    <div class="mt-1 bg-red-100 p-2 rounded-lg text-red-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-3xl p-8 pt-12 relative shadow-lg shadow-gray-200/50 border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2">
+                        <div class="w-16 h-16 bg-red-50 border-4 border-white rounded-full flex items-center justify-center text-red-500 shadow-md">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Data hafalan mudah hilang atau tidak terarsip dengan baik</h3>
-                        <p class="text-gray-600 text-sm">Resiko kehilangan histori sangat besar ketika buku prestasi rusak atau hilang.</p>
-                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Risiko data historis hilang</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Kehilangan histori sangat berisiko dan fatal ketika buku prestasi fisik santri rusak, basah, atau hilang.</p>
                 </div>
-                <div class="flex items-start gap-4 p-6 bg-red-50 rounded-2xl">
-                    <div class="mt-1 bg-red-100 p-2 rounded-lg text-red-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-3xl p-8 pt-12 relative shadow-lg shadow-gray-200/50 border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2">
+                        <div class="w-16 h-16 bg-islamic-gold/10 border-4 border-white rounded-full flex items-center justify-center text-islamic-gold shadow-md">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-gray-900 mb-2">Orang tua sulit mengetahui progres hafalan anak</h3>
-                        <p class="text-gray-600 text-sm">Laporan biasanya hanya turun pada waktu pembagian raport saja.</p>
-                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-3">Komunikasi orang tua minim</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Wali santri sulit mengetahui progres hafalan anak secara realtime, karena laporan biasanya hanya turun saat pembagian raport.</p>
                 </div>
             </div>
 
