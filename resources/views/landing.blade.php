@@ -97,7 +97,7 @@
                             </div>
                             <div>
                                 <p class="text-sm font-semibold text-gray-900">Setoran Berhasil</p>
-                                <p class="text-xs text-gray-500">Juz 30, Surat An-Naba</p>
+                                <p class="text-xs text-gray-500">Juz 30, Surat As-Syams</p>
                             </div>
                         </div>
                     </div>
