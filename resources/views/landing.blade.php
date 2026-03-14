@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hifdz Tracker | Manajemen Hafalan Santri</title>
-    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" style="width:60px;height:60px;object-fit:contain;border-radius:12px;"/>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -40,7 +40,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-2">
-                    <img src="{{ asset('img/logo.png') }}" class="w-12 h-12 object-contain" alt="Hifdz Tracker Logo">
+                    <img src="{{ asset('img/logo.png') }}" class="w-24 h-24 object-contain" alt="Hifdz Tracker Logo">
                     <span class="font-bold text-xl text-gray-900 tracking-tight">Hifdz Tracker</span>
                 </div>
                 <nav class="hidden md:flex space-x-8">
