@@ -45,7 +45,6 @@
                 <tr>
                     <th data-sort>No</th>
                     <th data-sort>Nama Santri</th>
-                    <th data-sort>L/P</th>
                     <th data-sort>Kelas</th>
                     <th data-sort>Halaqah</th>
                     <th data-sort>NISN</th>
@@ -68,11 +67,6 @@
                                 <div class="fw-700">{{ $student->name }}</div>
                             </div>
                         </div>
-                    </td>
-                    <td>
-                        <span class="badge {{ $student->gender === 'male' ? 'badge-info' : 'badge-danger' }}" style="{{ $student->gender === 'female' ? 'background:#fce7f3;color:#be185d' : '' }}">
-                            {{ $student->gender === 'male' ? '♂ L' : '♀ P' }}
-                        </span>
                     </td>
                     <td><span class="badge badge-primary">Kelas {{ $student->grade }}</span></td>
                     <td><span class="text-sm">{{ $student->halaqah_class }}</span></td>

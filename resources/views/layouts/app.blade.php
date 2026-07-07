@@ -875,6 +875,20 @@
             document.getElementById('menu-toggle').style.display = window.innerWidth <= 768 ? 'flex' : 'none';
         });
 
+        // Close sidebar on mobile when clicking outside or navigating
+        document.addEventListener('click', (e) => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('menu-toggle');
+            if (window.innerWidth <= 768 && sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+        document.addEventListener('livewire:navigated', () => {
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+
         // Auto dismiss alerts
         setTimeout(() => {
             document.querySelectorAll('.alert').forEach(el => {
