@@ -906,8 +906,8 @@
         </header>
 
         <!-- Page Loader (SPA) -->
-        <div id="page-loader" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); z-index: 99999; align-items: center; justify-content: center;">
-            <div style="position: relative; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center;">
+        <div id="page-loader" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease;">
+            <div style="position: relative; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; transform: scale(0.9); transition: transform 0.2s ease;" class="loader-content">
                 <div style="position: absolute; inset: 0; border: 4px solid #e2e8f0; border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
                 <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 50%;">
             </div>
@@ -1032,12 +1032,34 @@
                 sidebar.classList.remove('open');
             }
         });
-        document.addEventListener('livewire:navigating', () => {
-            document.getElementById('page-loader').style.display = 'flex';
-        });
+        function showLoader() {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                loader.style.display = 'flex';
+                void loader.offsetWidth;
+                loader.style.opacity = '1';
+                const content = loader.querySelector('.loader-content');
+                if (content) content.style.transform = 'scale(1)';
+            }
+        }
+
+        function hideLoader() {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                const content = loader.querySelector('.loader-content');
+                if (content) content.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 200);
+            }
+        }
+
+        document.addEventListener('livewire:navigating', showLoader);
+        window.addEventListener('beforeunload', showLoader);
 
         document.addEventListener('livewire:navigated', () => {
-            document.getElementById('page-loader').style.display = 'none';
+            hideLoader();
             
             if (window.innerWidth <= 768) {
                 document.getElementById('sidebar').classList.remove('open');

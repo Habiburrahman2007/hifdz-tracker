@@ -35,7 +35,7 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23047857\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-            opacity: 0.05;
+            opacity: 0.18;
             z-index: -1;
             pointer-events: none;
         }
@@ -164,6 +164,9 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -213,11 +216,29 @@
                 <button type="submit" class="btn-submit">Daftar Akun</button>
                 
                 <div style="text-align:center; margin-top:20px; font-size:13px; color:#64748b;">
-                    Sudah punya akun? <a href="{{ route('login') }}" style="color:var(--primary); font-weight:600; text-decoration:none;">Sign In di sini</a>
+                    Sudah punya akun? <a href="{{ route('login') }}" style="color:var(--primary); font-weight:600; text-decoration:none;">Masuk di sini</a>
                 </div>
             </form>
         </div>
     </div>
+
+    <!-- Register Loader -->
+    <div id="register-loader" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease;">
+        <div style="position: relative; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; transform: scale(0.9); transition: transform 0.2s ease;" id="register-loader-content">
+            <div style="position: absolute; inset: 0; border: 4px solid #e2e8f0; border-top-color: var(--primary, #059669); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <div style="font-size: 32px; z-index: 1;">📝</div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            const loader = document.getElementById('register-loader');
+            loader.style.display = 'flex';
+            void loader.offsetWidth;
+            loader.style.opacity = '1';
+            document.getElementById('register-loader-content').style.transform = 'scale(1)';
+        });
+    </script>
 
 </body>
 </html>
