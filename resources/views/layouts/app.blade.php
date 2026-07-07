@@ -737,6 +737,10 @@
             from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .fade-in { animation: fadeInUp 0.4s ease both; }
         .fade-in-1 { animation-delay: 0.05s; }
         .fade-in-2 { animation-delay: 0.1s; }
@@ -892,6 +896,14 @@
             </div>
         </header>
 
+        <!-- Page Loader (SPA) -->
+        <div id="page-loader" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); z-index: 99999; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center;">
+                <div style="position: absolute; inset: 0; border: 4px solid #e2e8f0; border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 50%;">
+            </div>
+        </div>
+
         <!-- Flash Messages -->
         @if(session('success'))
             <div style="padding: 0 28px; padding-top: 16px;">
@@ -936,12 +948,14 @@
             // Trigger reflow
             void modal.offsetWidth;
             modal.style.opacity = '1';
+            modal.style.pointerEvents = 'all';
             modal.querySelector('.modal-content').style.transform = 'scale(1)';
         }
 
         function hideLogoutModal() {
             const modal = document.getElementById('logout-modal');
             modal.style.opacity = '0';
+            modal.style.pointerEvents = 'none';
             modal.querySelector('.modal-content').style.transform = 'scale(0.9)';
             setTimeout(() => {
                 modal.style.display = 'none';
@@ -963,7 +977,13 @@
                 sidebar.classList.remove('open');
             }
         });
+        document.addEventListener('livewire:navigating', () => {
+            document.getElementById('page-loader').style.display = 'flex';
+        });
+
         document.addEventListener('livewire:navigated', () => {
+            document.getElementById('page-loader').style.display = 'none';
+            
             if (window.innerWidth <= 768) {
                 document.getElementById('sidebar').classList.remove('open');
             }
@@ -1036,5 +1056,6 @@
         });
     </script>
     @stack('scripts')
+    @livewireScriptConfig
 </body>
 </html>
