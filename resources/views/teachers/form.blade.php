@@ -21,22 +21,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Jenis Kelamin *</label>
-                    <select name="gender" class="form-control" required>
-                        <option value="">Pilih Jenis Kelamin</option>
-                        <option value="male" {{ old('gender', $teacher?->gender) === 'male' ? 'selected' : '' }}>♂ Laki-laki</option>
-                        <option value="female" {{ old('gender', $teacher?->gender) === 'female' ? 'selected' : '' }}>♀ Perempuan</option>
-                    </select>
+                    <label class="form-label">Email *</label>
+                    <input type="email" name="email" class="form-control" value="{{ old('email', $teacher?->user?->email) }}" required placeholder="Contoh: ustadz@example.com">
+                    @error('email')<p style="color:#dc2626;font-size:12px;margin-top:4px">{{ $message }}</p>@enderror
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Nomor WhatsApp</label>
                     <input type="text" name="whatsapp" class="form-control" value="{{ old('whatsapp', $teacher?->whatsapp) }}" placeholder="08123456789">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Alumnus Pondok/Pesantren</label>
-                    <input type="text" name="alumnus_of" class="form-control" value="{{ old('alumnus_of', $teacher?->alumnus_of) }}" placeholder="Contoh: Pesantren Al-Quran Bandung">
+                    @error('whatsapp')<p style="color:#dc2626;font-size:12px;margin-top:4px">{{ $message }}</p>@enderror
                 </div>
 
                 <div class="flex gap-12 mt-20">

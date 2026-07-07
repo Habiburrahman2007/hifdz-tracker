@@ -52,6 +52,12 @@
                     <span class="text-sm">{{ $teacher->whatsapp }}</span>
                 </div>
                 @endif
+                @if($teacher->user && $teacher->user->email)
+                <div class="flex items-center gap-8">
+                    <span style="font-size:14px">✉️</span>
+                    <span class="text-sm" style="word-break: break-all;">{{ $teacher->user->email }}</span>
+                </div>
+                @endif
                 <div class="flex items-center gap-8">
                     <span style="font-size:14px">👨‍🎓</span>
                     <span class="text-sm">{{ $teacher->students_count }} Santri Bimbingan</span>

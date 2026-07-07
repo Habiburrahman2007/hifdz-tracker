@@ -19,6 +19,14 @@ class DatabaseSeeder extends Seeder
         Setting::set('theme', 'emerald');
         Setting::set('logo', '');
 
+        // Admin User
+        \App\Models\User::create([
+            'name' => 'Administrator',
+            'email' => 'admin@example.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('password'),
+            'role' => 'admin',
+        ]);
+
         // Teachers
         $teachers = $this->seedTeachers();
 
@@ -41,6 +49,17 @@ class DatabaseSeeder extends Seeder
 
         $teachers = [];
         foreach ($teacherData as $data) {
+            $cleanName = str_replace(['Ustadz ', 'Ustadzah '], '', $data['name']);
+            $firstName = strtolower(explode(' ', $cleanName)[0]);
+
+            $user = \App\Models\User::create([
+                'name' => $data['name'],
+                'email' => $firstName . '@example.com',
+                'password' => \Illuminate\Support\Facades\Hash::make('password'),
+                'role' => 'ustadz',
+            ]);
+
+            $data['user_id'] = $user->id;
             $teachers[] = Teacher::create($data);
         }
         return $teachers;

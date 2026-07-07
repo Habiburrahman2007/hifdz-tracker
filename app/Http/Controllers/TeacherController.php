@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Teacher::withCount('students');
+        $query = Teacher::with(['user'])->withCount('students');
 
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
@@ -29,18 +32,32 @@ class TeacherController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'gender' => 'required|in:male,female',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'whatsapp' => 'nullable|string|max:20',
-            'alumnus_of' => 'nullable|string|max:255',
         ]);
 
-        Teacher::create($validated);
+        $password = Str::random(10);
 
-        return redirect()->route('teachers.index')->with('success', 'Data ustadz/ustadzah berhasil ditambahkan.');
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($password),
+            'role' => 'ustadz',
+        ]);
+
+        Teacher::create([
+            'name' => $validated['name'],
+            'whatsapp' => $validated['whatsapp'],
+            'user_id' => $user->id,
+            'gender' => 'male', // default gender
+        ]);
+
+        return redirect()->route('teachers.index')->with('success', "Data ustadz/ustadzah berhasil ditambahkan. Email: {$user->email}, Password: {$password}");
     }
 
     public function edit(Teacher $teacher)
     {
+        $teacher->load('user');
         return view('teachers.form', compact('teacher'));
     }
 
@@ -48,19 +65,32 @@ class TeacherController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'gender' => 'required|in:male,female',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $teacher->user_id,
             'whatsapp' => 'nullable|string|max:20',
-            'alumnus_of' => 'nullable|string|max:255',
         ]);
 
-        $teacher->update($validated);
+        if ($teacher->user) {
+            $teacher->user->update([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+            ]);
+        }
+
+        $teacher->update([
+            'name' => $validated['name'],
+            'whatsapp' => $validated['whatsapp'],
+        ]);
 
         return redirect()->route('teachers.index')->with('success', 'Data ustadz/ustadzah berhasil diperbarui.');
     }
 
     public function destroy(Teacher $teacher)
     {
+        $user = $teacher->user;
         $teacher->delete();
+        if ($user) {
+            $user->delete();
+        }
         return redirect()->route('teachers.index')->with('success', 'Data ustadz/ustadzah berhasil dihapus.');
     }
 }
