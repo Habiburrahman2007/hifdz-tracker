@@ -851,7 +851,7 @@
 
         <div class="sidebar-footer">
             @auth
-            <form action="{{ route('logout') }}" method="POST" style="margin-bottom: 12px;">
+            <form action="{{ route('logout') }}" method="POST" style="margin-bottom: 12px;" onsubmit="return confirm('Apakah Anda yakin ingin keluar/logout?');">
                 @csrf
                 <button type="submit" class="btn btn-secondary w-full" style="justify-content: center; background: rgba(255,255,255,0.1); color: var(--nav-text); border: 1px solid rgba(255,255,255,0.1);">
                     🚪 Logout

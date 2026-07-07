@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | {{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</title>
+    <title>Daftar | {{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -17,7 +17,6 @@
             --primary-light: #d1fae5;
             --gradient: linear-gradient(135deg, #059669, #0d9488);
         }
-        /* Fallback for other themes... using primary for all to keep it simple or inherit */
         
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -161,26 +160,6 @@
             border-left: 4px solid #ef4444;
         }
 
-        .checkbox-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .checkbox-wrapper input {
-            accent-color: var(--primary, #059669);
-            width: 16px;
-            height: 16px;
-        }
-
-        .checkbox-wrapper label {
-            font-size: 13px;
-            color: #64748b;
-            cursor: pointer;
-            user-select: none;
-        }
-
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -194,11 +173,11 @@
         Kembali ke Beranda
     </a>
 
-    <div class="login-card">
+    <div class="login-card" style="margin-top: 40px; margin-bottom: 40px;">
         <div class="login-header">
-            <div class="logo-icon">📖</div>
-            <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
-            <p>Sistem Manajemen Tahfidz</p>
+            <div class="logo-icon">📝</div>
+            <h1>Pendaftaran Wali Santri</h1>
+            <p>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</p>
         </div>
         
         <div class="login-body">
@@ -208,27 +187,33 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login.post') }}">
+            <form method="POST" action="{{ route('register.post') }}">
                 @csrf
+                
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Nama Anda" required autofocus>
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="admin@example.com" required autofocus>
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="email@example.com" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                    <input type="password" name="password" class="form-control" placeholder="Minimal 8 karakter" required>
                 </div>
 
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Remember me</label>
+                <div class="form-group">
+                    <label class="form-label">Konfirmasi Password</label>
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Ketik ulang password" required>
                 </div>
 
-                <button type="submit" class="btn-submit">Sign In</button>
+                <button type="submit" class="btn-submit">Daftar Akun</button>
                 
                 <div style="text-align:center; margin-top:20px; font-size:13px; color:#64748b;">
-                    Belum punya akun? <a href="{{ route('register') }}" style="color:var(--primary); font-weight:600; text-decoration:none;">Daftar Wali Santri</a>
+                    Sudah punya akun? <a href="{{ route('login') }}" style="color:var(--primary); font-weight:600; text-decoration:none;">Sign In di sini</a>
                 </div>
             </form>
         </div>
