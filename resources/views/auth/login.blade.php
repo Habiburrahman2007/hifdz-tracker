@@ -45,16 +45,25 @@
             position: absolute;
             top: 24px;
             left: 24px;
-            color: #64748b;
+            color: var(--primary-dark, #047857);
+            background: var(--primary-light, #d1fae5);
+            padding: 8px 16px;
+            border-radius: 20px;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
         }
-        .back-link:hover { color: var(--primary, #059669); }
+        .back-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.08);
+            background: var(--primary, #059669);
+            color: #fff;
+        }
 
         .login-card {
             background: #fff;
@@ -199,7 +208,12 @@
 
     <div class="login-card">
         <div class="login-header">
-            <div class="logo-icon">📖</div>
+            @php $logo = \App\Models\Setting::get('logo', ''); @endphp
+            @if($logo)
+                <img src="{{ Storage::url($logo) }}" alt="Logo" style="width:70px;height:70px;object-fit:cover;border-radius:16px;margin:0 auto 16px;border:2px solid rgba(255,255,255,0.3);box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            @else
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:70px;height:70px;object-fit:contain;border-radius:16px;margin:0 auto 16px;border:2px solid rgba(255,255,255,0.3);box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            @endif
             <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
             <p>Sistem Manajemen Tahfidz</p>
         </div>
@@ -220,7 +234,10 @@
 
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                    <div style="position: relative;">
+                        <input type="password" name="password" id="password-input" class="form-control" placeholder="••••••••" required style="padding-right: 48px;">
+                        <button type="button" onclick="togglePasswordVisibility('password-input', this)" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); border: none; background: transparent; cursor: pointer; font-size: 16px; padding: 4px; display: flex; align-items: center; justify-content: center; outline: none; user-select: none;">👁️</button>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-submit">Masuk Disini</button>
@@ -248,6 +265,17 @@
             loader.style.opacity = '1';
             document.getElementById('login-loader-content').style.transform = 'scale(1)';
         });
+
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerText = '🙈';
+            } else {
+                input.type = 'password';
+                btn.innerText = '👁️';
+            }
+        }
     </script>
 
 </body>
