@@ -127,13 +127,13 @@
             transition: var(--transition);
         }
         .sidebar-logo {
-            padding: 24px 20px 20px;
+            padding: 14px 16px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
         }
         .logo-icon {
             width: 46px;
@@ -259,6 +259,8 @@
             top: 0;
             z-index: 50;
             gap: 16px;
+            margin: 0;
+            overflow: hidden;
         }
         .topbar-title {
             flex: 1;
@@ -814,15 +816,11 @@
         <div class="sidebar-logo">
             <div class="logo-box">
                 @php $logo = \App\Models\Setting::get('logo', ''); @endphp
-                {{-- Dynamic Logo (commented for now since storage link isn't configured)
                 @if($logo)
-                    <img src="{{ Storage::url($logo) }}" alt="Logo" style="width:46px;height:46px;object-fit:cover;border-radius:12px;">
+                    <img src="{{ Storage::url($logo) }}" alt="Logo" style="width:38px;height:38px;object-fit:cover;border-radius:8px;flex-shrink:0;">
                 @else
-                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:60px;height:60px;object-fit:contain;border-radius:12px;">
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:38px;height:38px;object-fit:contain;border-radius:8px;flex-shrink:0;">
                 @endif
-                --}}
-                <!-- Static Logo -->
-                <img src="{{ asset('img/logo.png') }}" class="shadow-sm border border-gray-100" alt="Logo" style="width:75px;height:75px;object-fit:contain;border-radius:8px;">
                 <div class="logo-text">
                     <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
                     <span>Manajemen Tahfidz</span>
