@@ -163,8 +163,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Tgl</th>
-                    <th>Hari</th>
+                    <th>Tanggal</th>
                     <th>Kehadiran</th>
                     <th>Sabaq</th>
                     <th>Sabqi</th>
@@ -184,8 +183,7 @@
                 @endphp
                 @if($isValid)
                 <tr style="{{ $log['attendance'] === 'alpha' ? 'background:#fff5f5' : '' }}">
-                    <td class="fw-700">{{ $day }}</td>
-                    <td class="text-sm text-muted">{{ $date->locale('id')->isoFormat('ddd') }}</td>
+                    <td class="fw-700">{{ $date->format('d/m/y') }}</td>
                     <td>
                         @if($log['attendance'])
                             @php $attColors = ['present'=>'success','excused'=>'warning','late'=>'info','alpha'=>'danger','sick'=>'secondary']; $attLabels = ['present'=>'Hadir','excused'=>'Izin','late'=>'Telat','alpha'=>'Alpha','sick'=>'Sakit']; @endphp

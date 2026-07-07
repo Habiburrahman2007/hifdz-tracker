@@ -44,10 +44,6 @@
             </div>
 
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
-                <div class="flex items-center gap-8">
-                    <span style="font-size:14px">🔥</span>
-                    <span class="text-sm">Alumnus: <strong>{{ $teacher->alumnus_of ?? 'Tidak diketahui' }}</strong></span>
-                </div>
                 @if($teacher->whatsapp)
                 <div class="flex items-center gap-8">
                     <span style="font-size:14px">📱</span>

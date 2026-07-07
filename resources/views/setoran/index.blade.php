@@ -61,8 +61,7 @@
                 @forelse($setorans as $s)
                 <tr>
                     <td data-val="{{ $s->date->format('Y-m-d') }}">
-                        <div class="fw-700" style="font-size:13px">{{ $s->date->format('d M Y') }}</div>
-                        <div class="text-xs text-muted">{{ $s->date->locale('id')->dayName }}</div>
+                        <div class="fw-700" style="font-size:13px">{{ $s->date->format('d/m/y') }}</div>
                     </td>
                     <td>
                         <div class="flex items-center gap-8">
@@ -97,7 +96,7 @@
                         @endphp
                         <span class="fw-700" style="color:{{ $scoreColor }}; font-size:15px">{{ $score }}</span>
                     </td>
-                    <td class="text-muted text-sm">{{ $s->notes ? Str::limit($s->notes, 30) : '-' }}</td>
+                    <td class="text-muted text-sm">{{ $s->notes ? Str::limit($s->notes, 10) : '-' }}</td>
                     <td>
                         <div class="flex gap-8">
                             <a href="{{ route('setoran.edit', $s) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
