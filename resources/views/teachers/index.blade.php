@@ -70,7 +70,7 @@
                 @endif
                 @if(auth()->check() && auth()->user()->isAdmin())
                 <a href="{{ route('teachers.edit', $teacher) }}" wire:navigate class="btn btn-secondary btn-sm">✏️ Edit</a>
-                <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus data {{ $teacher->name }}?')">
+                <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="delete-form" onsubmit="confirmDelete(event, 'Apakah Anda yakin ingin menghapus data Ustadz {{ $teacher->name }}?')">
                     @csrf @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
                 </form>

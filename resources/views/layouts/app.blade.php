@@ -941,7 +941,24 @@
         </div>
     </div>
 
+    <!-- Custom Delete Confirmation Modal -->
+    <div id="delete-confirm-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s ease;">
+        <div class="modal-content" style="background: #fff; width: 90%; max-width: 360px; border-radius: 20px; padding: 24px; text-align: center; transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+            <div style="width: 64px; height: 64px; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 16px;">
+                ⚠️
+            </div>
+            <h3 style="font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">Hapus Data?</h3>
+            <p id="delete-modal-message" style="font-size: 14px; color: #64748b; margin-bottom: 24px; line-height: 1.5;">Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.</p>
+            <div style="display: flex; gap: 12px;">
+                <button type="button" onclick="hideDeleteModal()" style="flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; background: #fff; color: #475569; font-weight: 600; cursor: pointer; transition: background 0.2s;">Batal</button>
+                <button type="button" onclick="executeDelete()" style="flex: 1; padding: 10px; border-radius: 10px; border: none; background: #dc2626; color: #fff; font-weight: 600; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 6px -1px rgba(220,38,38,0.2);">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        let activeDeleteForm = null;
+
         function showLogoutModal() {
             const modal = document.getElementById('logout-modal');
             modal.style.display = 'flex';
@@ -960,6 +977,35 @@
             setTimeout(() => {
                 modal.style.display = 'none';
             }, 300);
+        }
+
+        function confirmDelete(event, message) {
+            event.preventDefault();
+            activeDeleteForm = event.target;
+            document.getElementById('delete-modal-message').innerText = message || 'Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.';
+            const modal = document.getElementById('delete-confirm-modal');
+            modal.style.display = 'flex';
+            void modal.offsetWidth;
+            modal.style.opacity = '1';
+            modal.style.pointerEvents = 'all';
+            modal.querySelector('.modal-content').style.transform = 'scale(1)';
+        }
+
+        function hideDeleteModal() {
+            const modal = document.getElementById('delete-confirm-modal');
+            modal.style.opacity = '0';
+            modal.style.pointerEvents = 'none';
+            modal.querySelector('.modal-content').style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                activeDeleteForm = null;
+            }, 300);
+        }
+
+        function executeDelete() {
+            if (activeDeleteForm) {
+                activeDeleteForm.submit();
+            }
         }
         // Mobile menu toggle visibility
         if (window.innerWidth <= 768) {

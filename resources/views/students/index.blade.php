@@ -90,7 +90,7 @@
                             <a href="{{ route('reports.index', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-secondary btn-sm">📊</a>
                             @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
                             <a href="{{ route('students.edit', $student) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
-                            <form action="{{ route('students.destroy', $student) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus data santri {{ $student->name }}?')">
+                            <form action="{{ route('students.destroy', $student) }}" method="POST" class="delete-form" onsubmit="confirmDelete(event, 'Apakah Anda yakin ingin menghapus data santri {{ $student->name }}?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
                             </form>

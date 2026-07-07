@@ -103,7 +103,7 @@
                         <div class="flex gap-8">
                             @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
                             <a href="{{ route('setoran.edit', $s) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
-                            <form action="{{ route('setoran.destroy', $s) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus setoran ini?')">
+                            <form action="{{ route('setoran.destroy', $s) }}" method="POST" class="delete-form" onsubmit="confirmDelete(event, 'Apakah Anda yakin ingin menghapus data setoran ini?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
                             </form>

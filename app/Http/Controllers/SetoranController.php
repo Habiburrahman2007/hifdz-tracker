@@ -49,7 +49,6 @@ class SetoranController extends Controller
     {
         $validated = $request->validate([
             'student_id' => 'required|exists:students,id',
-            'teacher_id' => 'nullable|exists:teachers,id',
             'date' => 'required|date',
             'type' => 'required|in:sabaq,sabqi,manzil',
             'juz' => 'required|integer|between:1,30',
@@ -62,6 +61,11 @@ class SetoranController extends Controller
             'attendance' => 'required|in:present,excused,late,alpha,sick',
             'fluency_score' => 'required|integer|between:0,100',
         ]);
+
+        $student = Student::find($validated['student_id']);
+        if ($student) {
+            $validated['teacher_id'] = $student->teacher_id;
+        }
 
         Setoran::create($validated);
 
@@ -81,7 +85,6 @@ class SetoranController extends Controller
     {
         $validated = $request->validate([
             'student_id' => 'required|exists:students,id',
-            'teacher_id' => 'nullable|exists:teachers,id',
             'date' => 'required|date',
             'type' => 'required|in:sabaq,sabqi,manzil',
             'juz' => 'required|integer|between:1,30',
@@ -94,6 +97,11 @@ class SetoranController extends Controller
             'attendance' => 'required|in:present,excused,late,alpha,sick',
             'fluency_score' => 'required|integer|between:0,100',
         ]);
+
+        $student = Student::find($validated['student_id']);
+        if ($student) {
+            $validated['teacher_id'] = $student->teacher_id;
+        }
 
         $setoran->update($validated);
 

@@ -30,17 +30,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Ustadz *</label>
-                        <select name="teacher_id" class="form-control" id="teacher-select">
-                            <option value="">Pilih Ustadz</option>
-                            @foreach($teachers as $teacher)
-                                <option value="{{ $teacher->id }}" {{ old('teacher_id', $setoran?->teacher_id) == $teacher->id ? 'selected' : '' }}>
-                                    {{ $teacher->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+
 
                     <div class="form-group">
                         <label class="form-label">Tanggal *</label>
@@ -162,14 +152,7 @@ document.getElementById('surah-select').addEventListener('change', function() {
     }
 });
 
-// Student select auto-fill teacher
-document.getElementById('student-select').addEventListener('change', function() {
-    const opt = this.options[this.selectedIndex];
-    const teacherId = opt.dataset.teacher;
-    if (teacherId) {
-        document.getElementById('teacher-select').value = teacherId;
-    }
-});
+
 
 // Initialize score color
 adjustScore(0);

@@ -76,23 +76,15 @@ class DatabaseSeeder extends Seeder
             'Daffa Maulana', 'Dzaki Aminullah', 'Faqih Islami', 'Ghazi Badrullah', 'Hamid Siddiq',
         ];
 
-        $femaleNames = [
-            'Fatimah Azzahra', 'Aisyah Radhiyah', 'Khadijah Nurhaliza', 'Maryam Saleha', 'Zainab Hanifah',
-            'Hafsah Azzahra', 'Ruqayyah Salimah', 'Asma Hanifah', 'Rafika Nabilah', 'Siti Rahmah',
-            'Nazwa Syafiqah', 'Fathiyyah Mumtaz', 'Hana Kamilah', 'Yasmeen Zahiyah', 'Nur Halimah',
-            'Qonita Maulida', 'Rania Hasanah', 'Salwa Muhibbah', 'Tsabitha Lathifah', 'Ummu Kultsum',
-        ];
-
         $halaqahClasses = ['Halaqah Al-Fatih', 'Halaqah Al-Ikhlas', 'Halaqah An-Nuur', 'Halaqah Al-Fajr', 'Halaqah Az-Zumar'];
         $grades = [7, 7, 8, 8, 9, 9, 10, 10, 11, 12];
 
         $students = [];
-        $allNames = array_merge($maleNames, $femaleNames);
         $maleCount = count($maleNames);
 
-        for ($i = 0; $i < 50; $i++) {
-            $name = $allNames[$i];
-            $gender = $i < $maleCount ? 'male' : 'female';
+        for ($i = 0; $i < $maleCount; $i++) {
+            $name = $maleNames[$i];
+            $gender = 'male';
             $grade = $grades[$i % count($grades)];
             $teacher = $teachers[$i % count($teachers)];
             $halaqah = $halaqahClasses[$i % count($halaqahClasses)];
@@ -104,7 +96,7 @@ class DatabaseSeeder extends Seeder
                 'halaqah_class' => $halaqah,
                 'nisn' => '10' . str_pad($i + 1, 8, '0', STR_PAD_LEFT),
                 'teacher_id' => $teacher->id,
-                'parent_name' => ($gender === 'male' ? 'Bapak' : 'Ibu') . ' ' . explode(' ', $name)[0],
+                'parent_name' => 'Bapak ' . explode(' ', $name)[0],
                 'parent_whatsapp' => '0812' . rand(10000000, 99999999),
             ]);
         }
