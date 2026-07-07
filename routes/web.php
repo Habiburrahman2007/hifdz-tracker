@@ -24,10 +24,23 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('teachers', TeacherController::class)->except(['show']);
-    Route::resource('students', StudentController::class)->except(['show']);
-    Route::resource('setoran', SetoranController::class)->except(['show']);
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
-    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
+
+    // Read-only routes (accessible by all authenticated users including guardian)
+    Route::get('teachers', [TeacherController::class, 'index'])->name('teachers.index');
+    Route::get('students', [StudentController::class, 'index'])->name('students.index');
+    Route::get('setoran', [SetoranController::class, 'index'])->name('setoran.index');
+
+    // Write routes (only for ustadz and admin)
+    Route::middleware('role:admin,ustadz')->group(function () {
+        Route::resource('teachers', TeacherController::class)->except(['index', 'show']);
+        Route::resource('students', StudentController::class)->except(['index', 'show']);
+        Route::resource('setoran', SetoranController::class)->except(['index', 'show']);
+    });
+
+    // Admin only routes
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
+    });
 });

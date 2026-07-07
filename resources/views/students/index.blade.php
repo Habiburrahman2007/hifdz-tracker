@@ -10,9 +10,11 @@
         <h1>Data Santri</h1>
         <p>Total {{ $students->total() }} santri terdaftar</p>
     </div>
+    @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
     <div class="section-header-actions">
         <a href="{{ route('students.create') }}" wire:navigate class="btn btn-primary">+ Tambah Santri</a>
     </div>
+    @endif
 </div>
 
 <!-- Filter Bar -->
@@ -84,13 +86,17 @@
                     </td>
                     <td>
                         <div class="flex gap-8">
+                            @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
                             <a href="{{ route('setoran.create', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-primary btn-sm">📝</a>
+                            @endif
                             <a href="{{ route('reports.index', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-secondary btn-sm">📊</a>
+                            @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
                             <a href="{{ route('students.edit', $student) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
                             <form action="{{ route('students.destroy', $student) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus data santri {{ $student->name }}?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
                             </form>
+                            @endif
                         </div>
                     </td>
                 </tr>
@@ -99,7 +105,11 @@
                     <td colspan="10">
                         <div class="empty-state">
                             <div class="empty-state-icon">👨‍🎓</div>
-                            <p>Belum ada data santri. <a href="{{ route('students.create') }}" wire:navigate style="color:var(--primary)">Tambah santri pertama</a></p>
+                            <p>Belum ada data santri. 
+                                @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
+                                <a href="{{ route('students.create') }}" wire:navigate style="color:var(--primary)">Tambah santri pertama</a>
+                                @endif
+                            </p>
                         </div>
                     </td>
                 </tr>

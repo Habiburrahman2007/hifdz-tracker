@@ -840,6 +840,7 @@
                     Laporan Bulanan
                 </a>
             </div>
+            @if(auth()->check() && auth()->user()->isAdmin())
             <div class="nav-section">
                 <div class="nav-label">Sistem</div>
                 <a href="{{ route('settings.index') }}" wire:navigate class="nav-item {{ request()->routeIs('settings.*') ? 'active' : '' }}" data-menu="settings">
@@ -847,13 +848,14 @@
                     Pengaturan
                 </a>
             </div>
+            @endif
         </nav>
 
         <div class="sidebar-footer">
             @auth
-            <form action="{{ route('logout') }}" method="POST" style="margin-bottom: 12px;" onsubmit="return confirm('Apakah Anda yakin ingin keluar/logout?');">
+            <form action="{{ route('logout') }}" method="POST" id="logout-form" style="margin-bottom: 12px;">
                 @csrf
-                <button type="submit" class="btn btn-secondary w-full" style="justify-content: center; background: rgba(255,255,255,0.1); color: var(--nav-text); border: 1px solid rgba(255,255,255,0.1);">
+                <button type="button" onclick="showLogoutModal()" class="btn btn-secondary w-full" style="justify-content: center; background: rgba(255,255,255,0.1); color: var(--nav-text); border: 1px solid rgba(255,255,255,0.1);">
                     🚪 Logout
                 </button>
             </form>
@@ -895,7 +897,39 @@
     </main>
     </div> <!-- /.app-wrapper -->
 
+    <!-- Custom Logout Modal -->
+    <div id="logout-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s ease;">
+        <div class="modal-content" style="background: #fff; width: 90%; max-width: 360px; border-radius: 20px; padding: 24px; text-align: center; transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+            <div style="width: 64px; height: 64px; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 16px;">
+                👋
+            </div>
+            <h3 style="font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">Keluar dari Aplikasi?</h3>
+            <p style="font-size: 14px; color: #64748b; margin-bottom: 24px; line-height: 1.5;">Anda harus masuk kembali untuk mengakses sistem manajemen tahfidz.</p>
+            <div style="display: flex; gap: 12px;">
+                <button type="button" onclick="hideLogoutModal()" style="flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; background: #fff; color: #475569; font-weight: 600; cursor: pointer; transition: background 0.2s;">Batal</button>
+                <button type="button" onclick="document.getElementById('logout-form').submit()" style="flex: 1; padding: 10px; border-radius: 10px; border: none; background: #ef4444; color: #fff; font-weight: 600; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 6px -1px rgba(239,68,68,0.2);">Ya, Keluar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        function showLogoutModal() {
+            const modal = document.getElementById('logout-modal');
+            modal.style.display = 'flex';
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.style.opacity = '1';
+            modal.querySelector('.modal-content').style.transform = 'scale(1)';
+        }
+
+        function hideLogoutModal() {
+            const modal = document.getElementById('logout-modal');
+            modal.style.opacity = '0';
+            modal.querySelector('.modal-content').style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
         // Mobile menu toggle visibility
         if (window.innerWidth <= 768) {
             document.getElementById('menu-toggle').style.display = 'flex';
