@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    @livewireStyles
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         /* ===== CSS VARIABLES / THEME ENGINE ===== */
@@ -1021,5 +1022,6 @@
         });
     </script>
     @stack('scripts')
+    @livewireScripts
 </body>
 </html>

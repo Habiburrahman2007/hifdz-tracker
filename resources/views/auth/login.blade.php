@@ -220,11 +220,6 @@
                     <input type="password" name="password" class="form-control" placeholder="••••••••" required>
                 </div>
 
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Remember me</label>
-                </div>
-
                 <button type="submit" class="btn-submit">Sign In</button>
                 
                 <div style="text-align:center; margin-top:20px; font-size:13px; color:#64748b;">

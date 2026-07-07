@@ -49,8 +49,8 @@
                     <a href="#testimoni" class="text-gray-600 hover:text-islamic-green font-medium transition">Testimoni</a>
                 </nav>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('dashboard') }}" class="px-5 py-2.5 bg-islamic-green text-white font-semibold rounded-full hover:bg-islamic-dark transition-colors shadow-lg shadow-islamic-green/30">
-                        Masuk Dashboard
+                    <a href="{{ route('login') }}" class="px-5 py-2.5 bg-islamic-green text-white font-semibold rounded-full hover:bg-islamic-dark transition-colors shadow-lg shadow-islamic-green/30">
+                        Login
                     </a>
                 </div>
             </div>
@@ -77,8 +77,8 @@
                         Tidak perlu lagi pencatatan manual yang rumit. Dengan Hifdz Tracker, ustadz dan ustadzah dapat memantau progres hafalan santri secara real-time dalam satu sistem yang rapi dan mudah digunakan.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="{{ route('dashboard') }}" class="w-full sm:w-auto px-8 py-3.5 bg-islamic-green text-white font-semibold rounded-full hover:bg-islamic-dark transition-transform hover:-translate-y-1 shadow-xl shadow-islamic-green/30 text-center">
-                            Coba Demo
+                        <a href="{{ route('register') }}" class="w-full sm:w-auto px-8 py-3.5 bg-islamic-green text-white font-semibold rounded-full hover:bg-islamic-dark transition-transform hover:-translate-y-1 shadow-xl shadow-islamic-green/30 text-center">
+                            Daftar Wali Santri
                         </a>
                         <a href="#" class="w-full sm:w-auto px-8 py-3.5 bg-white border border-gray-300 text-gray-700 font-semibold rounded-full hover:bg-gray-50 transition-colors text-center">
                             Hubungi Kami
@@ -222,8 +222,8 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-3 relative z-10 text-white">Lebih Terstruktur</h3>
                     <p class="text-white/90 mb-6 relative z-10">Eksplorasi semua kemampuan platform kami secara langsung.</p>
-                    <a href="{{ route('dashboard') }}" class="inline-flex items-center text-white font-bold hover:text-white/80 transition-colors relative z-10 group">
-                        Coba Fitur Sekarang <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <a href="{{ route('register') }}" class="inline-flex items-center text-white font-bold hover:text-white/80 transition-colors relative z-10 group">
+                        Daftar Wali Santri <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
             </div>
@@ -479,8 +479,8 @@
         <div class="max-w-3xl mx-auto relative z-10 px-4">
             <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Mulai Digitalisasi Manajemen Hafalan di Pesantren Anda</h2>
             <p class="text-lg text-gray-600 mb-10">Gunakan Hifdz Tracker untuk mengelola setoran hafalan santri dengan lebih efisien dan terorganisir.</p>
-            <a href="{{ route('dashboard') }}" class="inline-block px-10 py-4 bg-islamic-green text-white font-bold rounded-full hover:bg-islamic-dark hover:scale-105 transition-all duration-300 shadow-xl shadow-islamic-green/30">
-                Coba Demo Sekarang
+            <a href="{{ route('register') }}" class="inline-block px-10 py-4 bg-islamic-green text-white font-bold rounded-full hover:bg-islamic-dark hover:scale-105 transition-all duration-300 shadow-xl shadow-islamic-green/30">
+                Daftar Sekarang
             </a>
         </div>
     </section>
