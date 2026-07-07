@@ -79,7 +79,7 @@
                     <button type="submit" class="btn btn-primary">
                         {{ $student ? '💾 Simpan Perubahan' : '➕ Tambah Santri' }}
                     </button>
-                    <a href="{{ route('students.index') }}" class="btn btn-secondary">← Kembali</a>
+                    <a href="{{ route('students.index') }}" wire:navigate class="btn btn-secondary">← Kembali</a>
                 </div>
             </form>
         </div>

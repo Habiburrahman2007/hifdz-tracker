@@ -11,7 +11,7 @@
         <p>Total {{ $students->total() }} santri terdaftar</p>
     </div>
     <div class="section-header-actions">
-        <a href="{{ route('students.create') }}" class="btn btn-primary">+ Tambah Santri</a>
+        <a href="{{ route('students.create') }}" wire:navigate class="btn btn-primary">+ Tambah Santri</a>
     </div>
 </div>
 
@@ -33,7 +33,7 @@
                 @endforeach
             </select>
             <button type="submit" class="btn btn-primary">Filter</button>
-            <a href="{{ route('students.index') }}" class="btn btn-secondary">Reset</a>
+            <a href="{{ route('students.index') }}" wire:navigate class="btn btn-secondary">Reset</a>
         </form>
     </div>
 </div>
@@ -90,9 +90,9 @@
                     </td>
                     <td>
                         <div class="flex gap-8">
-                            <a href="{{ route('setoran.create', ['student_id' => $student->id]) }}" class="btn btn-primary btn-sm">📝</a>
-                            <a href="{{ route('reports.index', ['student_id' => $student->id]) }}" class="btn btn-secondary btn-sm">📊</a>
-                            <a href="{{ route('students.edit', $student) }}" class="btn btn-secondary btn-sm">✏️</a>
+                            <a href="{{ route('setoran.create', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-primary btn-sm">📝</a>
+                            <a href="{{ route('reports.index', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-secondary btn-sm">📊</a>
+                            <a href="{{ route('students.edit', $student) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
                             <form action="{{ route('students.destroy', $student) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus data santri {{ $student->name }}?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -105,7 +105,7 @@
                     <td colspan="10">
                         <div class="empty-state">
                             <div class="empty-state-icon">👨‍🎓</div>
-                            <p>Belum ada data santri. <a href="{{ route('students.create') }}" style="color:var(--primary)">Tambah santri pertama</a></p>
+                            <p>Belum ada data santri. <a href="{{ route('students.create') }}" wire:navigate style="color:var(--primary)">Tambah santri pertama</a></p>
                         </div>
                     </td>
                 </tr>
@@ -119,7 +119,7 @@
                 @if($page == $students->currentPage())
                     <span class="active">{{ $page }}</span>
                 @else
-                    <a href="{{ $url }}">{{ $page }}</a>
+                    <a href="{{ $url }}" wire:navigate>{{ $page }}</a>
                 @endif
             @endforeach
         </div>

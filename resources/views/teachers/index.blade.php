@@ -11,7 +11,7 @@
         <p>Total {{ $teachers->total() }} pengajar terdaftar</p>
     </div>
     <div class="section-header-actions">
-        <a href="{{ route('teachers.create') }}" class="btn btn-primary">+ Tambah Ustadz/ah</a>
+        <a href="{{ route('teachers.create') }}" wire:navigate class="btn btn-primary">+ Tambah Ustadz/ah</a>
     </div>
 </div>
 
@@ -20,7 +20,7 @@
         <form method="GET" action="{{ route('teachers.index') }}" class="filter-bar">
             <input type="text" name="search" placeholder="🔍 Cari nama..." class="form-control" value="{{ request('search') }}" style="max-width:260px">
             <button type="submit" class="btn btn-primary">Cari</button>
-            <a href="{{ route('teachers.index') }}" class="btn btn-secondary">Reset</a>
+            <a href="{{ route('teachers.index') }}" wire:navigate class="btn btn-secondary">Reset</a>
         </form>
     </div>
 </div>
@@ -64,7 +64,7 @@
                 @if($teacher->whatsapp)
                 <a href="https://wa.me/{{ preg_replace('/^0/', '62', $teacher->whatsapp) }}" target="_blank" class="btn btn-success btn-sm flex-1 text-center" style="justify-content:center">💬 WA</a>
                 @endif
-                <a href="{{ route('teachers.edit', $teacher) }}" class="btn btn-secondary btn-sm">✏️ Edit</a>
+                <a href="{{ route('teachers.edit', $teacher) }}" wire:navigate class="btn btn-secondary btn-sm">✏️ Edit</a>
                 <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus data {{ $teacher->name }}?')">
                     @csrf @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">🗑️</button>

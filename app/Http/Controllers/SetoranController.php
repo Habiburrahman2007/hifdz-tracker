@@ -40,8 +40,9 @@ class SetoranController extends Controller
         $teachers = Teacher::orderBy('name')->get();
         $surahs = QuranHelper::getSurahOptions();
         $selectedStudentId = $request->get('student_id');
+        $setoran = null;
 
-        return view('setoran.form', compact('students', 'teachers', 'surahs', 'selectedStudentId'));
+        return view('setoran.form', compact('students', 'teachers', 'surahs', 'selectedStudentId', 'setoran'));
     }
 
     public function store(Request $request)

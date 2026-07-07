@@ -11,7 +11,7 @@
         <p>Input dan kelola setoran harian santri</p>
     </div>
     <div class="section-header-actions">
-        <a href="{{ route('setoran.create') }}" class="btn btn-primary">+ Input Setoran</a>
+        <a href="{{ route('setoran.create') }}" wire:navigate class="btn btn-primary">+ Input Setoran</a>
     </div>
 </div>
 
@@ -34,7 +34,7 @@
             <input type="date" name="date_from" class="form-control" value="{{ request('date_from') }}" style="max-width:160px">
             <input type="date" name="date_to" class="form-control" value="{{ request('date_to') }}" style="max-width:160px">
             <button type="submit" class="btn btn-primary">Filter</button>
-            <a href="{{ route('setoran.index') }}" class="btn btn-secondary">Reset</a>
+            <a href="{{ route('setoran.index') }}" wire:navigate class="btn btn-secondary">Reset</a>
         </form>
     </div>
 </div>
@@ -100,7 +100,7 @@
                     <td class="text-muted text-sm">{{ $s->notes ? Str::limit($s->notes, 30) : '-' }}</td>
                     <td>
                         <div class="flex gap-8">
-                            <a href="{{ route('setoran.edit', $s) }}" class="btn btn-secondary btn-sm">✏️</a>
+                            <a href="{{ route('setoran.edit', $s) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
                             <form action="{{ route('setoran.destroy', $s) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus setoran ini?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
@@ -127,7 +127,7 @@
                 @if($page == $setorans->currentPage())
                     <span class="active">{{ $page }}</span>
                 @else
-                    <a href="{{ $url }}">{{ $page }}</a>
+                    <a href="{{ $url }}" wire:navigate>{{ $page }}</a>
                 @endif
             @endforeach
         </div>

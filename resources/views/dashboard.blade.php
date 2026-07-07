@@ -35,7 +35,7 @@
         <div class="card-header">
             <div style="font-size:20px;">🏆</div>
             <h3>Top 10 Hafiz Terbaik</h3>
-            <a href="{{ route('reports.index') }}" class="btn btn-secondary btn-sm">Lihat Semua</a>
+            <a href="{{ route('reports.index') }}" wire:navigate class="btn btn-secondary btn-sm">Lihat Semua</a>
         </div>
         <div class="table-wrapper">
             <table>

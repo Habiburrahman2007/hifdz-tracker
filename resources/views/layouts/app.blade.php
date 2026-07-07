@@ -760,6 +760,7 @@
         .empty-state-icon { font-size: 48px; margin-bottom: 12px; }
         .empty-state p { font-size: 14px; }
     </style>
+    @livewireStyles
     @stack('styles')
 </head>
 <body>
@@ -775,7 +776,7 @@
                 @endif
                 <div class="logo-text">
                     <h1>{{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</h1>
-                    <span>Sistem Manajemen Tahfidz</span>
+                    <span>Manajemen Tahfidz</span>
                 </div>
             </div>
         </div>
@@ -783,36 +784,36 @@
         <nav class="sidebar-nav">
             <div class="nav-section">
                 <div class="nav-label">Utama</div>
-                <a href="{{ route('dashboard') }}" class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}" data-menu="dashboard">
+                <a href="{{ route('dashboard') }}" wire:navigate class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}" data-menu="dashboard">
                     <div class="nav-icon">🏠</div>
                     Dashboard
                 </a>
             </div>
             <div class="nav-section">
                 <div class="nav-label">Manajemen</div>
-                <a href="{{ route('students.index') }}" class="nav-item {{ request()->routeIs('students.*') ? 'active' : '' }}" data-menu="students">
+                <a href="{{ route('students.index') }}" wire:navigate class="nav-item {{ request()->routeIs('students.*') ? 'active' : '' }}" data-menu="students">
                     <div class="nav-icon">👨‍🎓</div>
                     Data Santri
                 </a>
-                <a href="{{ route('teachers.index') }}" class="nav-item {{ request()->routeIs('teachers.*') ? 'active' : '' }}" data-menu="teachers">
+                <a href="{{ route('teachers.index') }}" wire:navigate class="nav-item {{ request()->routeIs('teachers.*') ? 'active' : '' }}" data-menu="teachers">
                     <div class="nav-icon">👨‍🏫</div>
                     Data Ustadz
                 </a>
-                <a href="{{ route('setoran.index') }}" class="nav-item {{ request()->routeIs('setoran.*') ? 'active' : '' }}" data-menu="setoran">
+                <a href="{{ route('setoran.index') }}" wire:navigate class="nav-item {{ request()->routeIs('setoran.*') ? 'active' : '' }}" data-menu="setoran">
                     <div class="nav-icon">📝</div>
                     Setoran Hafalan
                 </a>
             </div>
             <div class="nav-section">
                 <div class="nav-label">Analisis</div>
-                <a href="{{ route('reports.index') }}" class="nav-item {{ request()->routeIs('reports.*') ? 'active' : '' }}" data-menu="reports">
+                <a href="{{ route('reports.index') }}" wire:navigate class="nav-item {{ request()->routeIs('reports.*') ? 'active' : '' }}" data-menu="reports">
                     <div class="nav-icon">📊</div>
                     Laporan Bulanan
                 </a>
             </div>
             <div class="nav-section">
                 <div class="nav-label">Sistem</div>
-                <a href="{{ route('settings.index') }}" class="nav-item {{ request()->routeIs('settings.*') ? 'active' : '' }}" data-menu="settings">
+                <a href="{{ route('settings.index') }}" wire:navigate class="nav-item {{ request()->routeIs('settings.*') ? 'active' : '' }}" data-menu="settings">
                     <div class="nav-icon">⚙️</div>
                     Pengaturan
                 </a>
@@ -895,6 +896,7 @@
             });
         });
     </script>
+    @livewireScripts
     @stack('scripts')
 </body>
 </html>

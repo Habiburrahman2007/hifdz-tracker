@@ -131,7 +131,7 @@
                     <button type="submit" class="btn btn-primary">
                         {{ isset($setoran) ? '💾 Simpan Perubahan' : '📝 Simpan Setoran' }}
                     </button>
-                    <a href="{{ route('setoran.index') }}" class="btn btn-secondary">← Kembali</a>
+                    <a href="{{ route('setoran.index') }}" wire:navigate class="btn btn-secondary">← Kembali</a>
                 </div>
             </form>
         </div>
