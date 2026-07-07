@@ -32,14 +32,14 @@ return new class extends Migration
 
             foreach ($julySetorans as $setoran) {
                 // Check if setoran for this student, date, and type already exists to avoid duplicates
-                $exists = \Illuminate\Support\Facades\DB::table('setoran')
+                $exists = \Illuminate\Support\Facades\DB::table('setorans')
                     ->where('student_id', $student->id)
                     ->where('date', $setoran['date'])
                     ->where('type', 'sabaq')
                     ->exists();
 
                 if (!$exists) {
-                    \Illuminate\Support\Facades\DB::table('setoran')->insert([
+                    \Illuminate\Support\Facades\DB::table('setorans')->insert([
                         'student_id' => $student->id,
                         'teacher_id' => $student->teacher_id,
                         'date' => $setoran['date'],
