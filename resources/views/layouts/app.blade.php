@@ -520,6 +520,7 @@
         .filter-bar .form-control {
             width: auto;
         }
+        .filter-bar button[type="submit"] { display: none; }
 
         /* ===== PAGINATION ===== */
         .pagination {
@@ -709,6 +710,7 @@
             .main { margin-left: 0; }
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .page-content { padding: 16px; }
+            .topbar-title p { display: none; }
         }
 
         /* ===== ANIMATIONS ===== */
@@ -887,7 +889,43 @@
             if (window.innerWidth <= 768) {
                 document.getElementById('sidebar').classList.remove('open');
             }
+            if (window.filterActiveElement) {
+                const el = document.querySelector(`.filter-bar [name="${window.filterActiveElement}"]`);
+                if (el) {
+                    el.focus();
+                    if (el.setSelectionRange && window.filterActiveCursor !== null) {
+                        try { el.setSelectionRange(window.filterActiveCursor, window.filterActiveCursor); } catch(err) {}
+                    }
+                }
+                window.filterActiveElement = null;
+                window.filterActiveCursor = null;
+            }
         });
+
+        // Live search and filter with debounce
+        function handleFilterChange(e) {
+            const form = e.target.closest('.filter-bar');
+            if (!form) return;
+            
+            if (document.activeElement && document.activeElement.name) {
+                window.filterActiveElement = document.activeElement.name;
+                window.filterActiveCursor = document.activeElement.selectionStart || null;
+            }
+
+            clearTimeout(window.filterDebounce);
+            window.filterDebounce = setTimeout(() => {
+                const url = new URL(form.action || window.location.href);
+                const params = new URLSearchParams(new FormData(form));
+                if (typeof Livewire !== 'undefined') {
+                    Livewire.navigate(url.pathname + '?' + params.toString());
+                } else {
+                    form.submit();
+                }
+            }, 500);
+        }
+
+        document.addEventListener('input', handleFilterChange);
+        document.addEventListener('change', handleFilterChange);
 
         // Auto dismiss alerts
         setTimeout(() => {
