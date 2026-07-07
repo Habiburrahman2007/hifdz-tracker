@@ -10,7 +10,7 @@
         <h1>Data Ustadz/Ustadzah</h1>
         <p>Total {{ $teachers->total() }} pengajar terdaftar</p>
     </div>
-    @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
+    @if(auth()->check() && auth()->user()->isAdmin())
     <div class="section-header-actions">
         <a href="{{ route('teachers.create') }}" wire:navigate class="btn btn-primary">+ Tambah Ustadz/ah</a>
     </div>
@@ -62,7 +62,7 @@
                 @if($teacher->whatsapp)
                 <a href="https://wa.me/{{ preg_replace('/^0/', '62', $teacher->whatsapp) }}" target="_blank" class="btn btn-success btn-sm flex-1 text-center" style="justify-content:center">💬 WA</a>
                 @endif
-                @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
+                @if(auth()->check() && auth()->user()->isAdmin())
                 <a href="{{ route('teachers.edit', $teacher) }}" wire:navigate class="btn btn-secondary btn-sm">✏️ Edit</a>
                 <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="delete-form" onsubmit="return confirm('Hapus data {{ $teacher->name }}?')">
                     @csrf @method('DELETE')

@@ -33,13 +33,13 @@ Route::middleware('auth')->group(function () {
 
     // Write routes (only for ustadz and admin)
     Route::middleware('role:admin,ustadz')->group(function () {
-        Route::resource('teachers', TeacherController::class)->except(['index', 'show']);
         Route::resource('students', StudentController::class)->except(['index', 'show']);
         Route::resource('setoran', SetoranController::class)->except(['index', 'show']);
     });
 
     // Admin only routes
     Route::middleware('role:admin')->group(function () {
+        Route::resource('teachers', TeacherController::class)->except(['index', 'show']);
         Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
     });

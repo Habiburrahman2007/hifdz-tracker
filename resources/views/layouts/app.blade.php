@@ -853,12 +853,11 @@
 
         <div class="sidebar-footer">
             @auth
-            <form action="{{ route('logout') }}" method="POST" id="logout-form" style="margin-bottom: 12px;">
-                @csrf
+            <div style="margin-bottom: 12px;">
                 <button type="button" onclick="showLogoutModal()" class="btn btn-secondary w-full" style="justify-content: center; background: rgba(255,255,255,0.1); color: var(--nav-text); border: 1px solid rgba(255,255,255,0.1);">
                     🚪 Logout
                 </button>
-            </form>
+            </div>
             @endauth
             <p>&copy; {{ date('Y') }} {{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</p>
         </div>
@@ -907,7 +906,10 @@
             <p style="font-size: 14px; color: #64748b; margin-bottom: 24px; line-height: 1.5;">Anda harus masuk kembali untuk mengakses sistem manajemen tahfidz.</p>
             <div style="display: flex; gap: 12px;">
                 <button type="button" onclick="hideLogoutModal()" style="flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e1; background: #fff; color: #475569; font-weight: 600; cursor: pointer; transition: background 0.2s;">Batal</button>
-                <button type="button" onclick="document.getElementById('logout-form').submit()" style="flex: 1; padding: 10px; border-radius: 10px; border: none; background: #ef4444; color: #fff; font-weight: 600; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 6px -1px rgba(239,68,68,0.2);">Ya, Keluar</button>
+                <form action="{{ route('logout') }}" method="POST" style="flex: 1; margin: 0;">
+                    @csrf
+                    <button type="submit" style="width: 100%; padding: 10px; border-radius: 10px; border: none; background: #ef4444; color: #fff; font-weight: 600; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 6px -1px rgba(239,68,68,0.2);">Ya, Keluar</button>
+                </form>
             </div>
         </div>
     </div>
