@@ -13,7 +13,6 @@ class Student extends Model
         'name',
         'gender',
         'grade',
-        'halaqah_class',
         'nisn',
         'teacher_id',
         'parent_name',

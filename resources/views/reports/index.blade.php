@@ -62,7 +62,6 @@
                 {{ substr($student->name, 0, 1) }}
             </div>
             <div class="fw-700" style="font-size:17px;margin-bottom:4px">{{ $student->name }}</div>
-            <div class="text-muted text-sm mb-8">{{ $student->halaqah_class }}</div>
             <div class="flex gap-8 mb-16" style="justify-content:center;flex-wrap:wrap">
                 <span class="badge badge-primary">Kelas {{ $student->grade }}</span>
                 <span class="badge badge-secondary">{{ $student->teacher?->name ?? 'Belum ada' }}</span>

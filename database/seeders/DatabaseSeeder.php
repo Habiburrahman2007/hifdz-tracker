@@ -76,7 +76,6 @@ class DatabaseSeeder extends Seeder
             'Daffa Maulana', 'Dzaki Aminullah', 'Faqih Islami', 'Ghazi Badrullah', 'Hamid Siddiq',
         ];
 
-        $halaqahClasses = ['Halaqah Al-Fatih', 'Halaqah Al-Ikhlas', 'Halaqah An-Nuur', 'Halaqah Al-Fajr', 'Halaqah Az-Zumar'];
         $grades = [7, 7, 8, 8, 9, 9, 10, 10, 11, 12];
 
         $students = [];
@@ -87,13 +86,11 @@ class DatabaseSeeder extends Seeder
             $gender = 'male';
             $grade = $grades[$i % count($grades)];
             $teacher = $teachers[$i % count($teachers)];
-            $halaqah = $halaqahClasses[$i % count($halaqahClasses)];
 
             $students[] = Student::create([
                 'name' => $name,
                 'gender' => $gender,
                 'grade' => $grade,
-                'halaqah_class' => $halaqah,
                 'nisn' => '10' . str_pad($i + 1, 8, '0', STR_PAD_LEFT),
                 'teacher_id' => $teacher->id,
                 'parent_name' => 'Bapak ' . explode(' ', $name)[0],

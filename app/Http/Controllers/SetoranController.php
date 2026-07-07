@@ -36,10 +36,25 @@ class SetoranController extends Controller
 
     public function create(Request $request)
     {
-        $students = Student::with('teacher')->orderBy('name')->get();
+        $user = auth()->user();
+        $teacher = $user->teacher;
+
+        if (!$teacher) {
+            abort(403, 'Anda belum terdaftar sebagai Ustadz.');
+        }
+
+        $students = Student::where('teacher_id', $teacher->id)->orderBy('name')->get();
         $teachers = Teacher::orderBy('name')->get();
         $surahs = QuranHelper::getSurahOptions();
         $selectedStudentId = $request->get('student_id');
+
+        if ($selectedStudentId) {
+            $student = Student::find($selectedStudentId);
+            if (!$student || $student->teacher_id !== $teacher->id) {
+                abort(403, 'Santri ini bukan di bawah bimbingan Anda.');
+            }
+        }
+
         $setoran = null;
 
         return view('setoran.form', compact('students', 'teachers', 'surahs', 'selectedStudentId', 'setoran'));
@@ -47,6 +62,13 @@ class SetoranController extends Controller
 
     public function store(Request $request)
     {
+        $user = auth()->user();
+        $teacher = $user->teacher;
+
+        if (!$teacher) {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
+
         $validated = $request->validate([
             'student_id' => 'required|exists:students,id',
             'date' => 'required|date',
@@ -63,9 +85,11 @@ class SetoranController extends Controller
         ]);
 
         $student = Student::find($validated['student_id']);
-        if ($student) {
-            $validated['teacher_id'] = $student->teacher_id;
+        if (!$student || $student->teacher_id !== $teacher->id) {
+            abort(403, 'Santri ini bukan di bawah bimbingan Anda.');
         }
+
+        $validated['teacher_id'] = $teacher->id;
 
         Setoran::create($validated);
 
@@ -74,7 +98,14 @@ class SetoranController extends Controller
 
     public function edit(Setoran $setoran)
     {
-        $students = Student::with('teacher')->orderBy('name')->get();
+        $user = auth()->user();
+        $teacher = $user->teacher;
+
+        if (!$teacher || $setoran->teacher_id !== $teacher->id) {
+            abort(403, 'Anda tidak dapat mengubah setoran santri yang bukan di bawah bimbingan Anda.');
+        }
+
+        $students = Student::where('teacher_id', $teacher->id)->orderBy('name')->get();
         $teachers = Teacher::orderBy('name')->get();
         $surahs = QuranHelper::getSurahOptions();
 
@@ -83,6 +114,13 @@ class SetoranController extends Controller
 
     public function update(Request $request, Setoran $setoran)
     {
+        $user = auth()->user();
+        $teacher = $user->teacher;
+
+        if (!$teacher || $setoran->teacher_id !== $teacher->id) {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
+
         $validated = $request->validate([
             'student_id' => 'required|exists:students,id',
             'date' => 'required|date',
@@ -99,9 +137,11 @@ class SetoranController extends Controller
         ]);
 
         $student = Student::find($validated['student_id']);
-        if ($student) {
-            $validated['teacher_id'] = $student->teacher_id;
+        if (!$student || $student->teacher_id !== $teacher->id) {
+            abort(403, 'Santri ini bukan di bawah bimbingan Anda.');
         }
+
+        $validated['teacher_id'] = $teacher->id;
 
         $setoran->update($validated);
 
@@ -110,6 +150,13 @@ class SetoranController extends Controller
 
     public function destroy(Setoran $setoran)
     {
+        $user = auth()->user();
+        $teacher = $user->teacher;
+
+        if (!$teacher || $setoran->teacher_id !== $teacher->id) {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
+
         $setoran->delete();
         return redirect()->route('setoran.index')->with('success', 'Setoran berhasil dihapus.');
     }

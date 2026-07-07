@@ -31,14 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::get('students', [StudentController::class, 'index'])->name('students.index');
     Route::get('setoran', [SetoranController::class, 'index'])->name('setoran.index');
 
-    // Write routes (only for ustadz and admin)
-    Route::middleware('role:admin,ustadz')->group(function () {
-        Route::resource('students', StudentController::class)->except(['index', 'show']);
+    // Ustadz only routes (for setoran CRUD)
+    Route::middleware('role:ustadz')->group(function () {
         Route::resource('setoran', SetoranController::class)->except(['index', 'show']);
     });
 
     // Admin only routes
     Route::middleware('role:admin')->group(function () {
+        Route::resource('students', StudentController::class)->except(['index', 'show']);
         Route::resource('teachers', TeacherController::class)->except(['index', 'show']);
         Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');

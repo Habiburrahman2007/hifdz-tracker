@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Summary Cards -->
-<div class="grid grid-4 mb-24">
+<div class="grid grid-3 mb-24">
     <div class="stat-card fade-in fade-in-1" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);">
         <span class="stat-card-icon">👨‍🎓</span>
         <div class="stat-card-value">{{ number_format($totalStudents) }}</div>
@@ -15,11 +15,6 @@
         <span class="stat-card-icon">👨‍🏫</span>
         <div class="stat-card-value">{{ number_format($totalTeachers) }}</div>
         <div class="stat-card-label">Total Ustadz</div>
-    </div>
-    <div class="stat-card fade-in fade-in-3" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
-        <span class="stat-card-icon">🕌</span>
-        <div class="stat-card-value">{{ number_format($totalHalaqah) }}</div>
-        <div class="stat-card-label">Kelas Halaqah</div>
     </div>
     <div class="stat-card fade-in fade-in-4" style="background: linear-gradient(135deg, #dc2626, #e11d48);">
         <span class="stat-card-icon">📜</span>
@@ -61,7 +56,6 @@
                                 <div class="avatar avatar-male">{{ substr($student['name'], 0, 1) }}</div>
                                 <div>
                                     <div class="fw-700" style="font-size:13px">{{ $student['name'] }}</div>
-                                    <div class="text-muted text-xs">{{ $student['halaqah_class'] }}</div>
                                 </div>
                             </div>
                         </td>
@@ -110,7 +104,6 @@
                                 <div class="avatar avatar-male" style="background:#fee2e2;color:#dc2626;">{{ substr($student['name'], 0, 1) }}</div>
                                 <div>
                                     <div class="fw-700" style="font-size:13px">{{ $student['name'] }}</div>
-                                    <div class="text-muted text-xs">{{ $student['halaqah_class'] }}</div>
                                 </div>
                             </div>
                         </td>

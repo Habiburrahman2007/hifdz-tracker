@@ -10,7 +10,7 @@
         <h1>Data Santri</h1>
         <p>Total {{ $students->total() }} santri terdaftar</p>
     </div>
-    @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
+    @if(auth()->check() && auth()->user()->isAdmin())
     <div class="section-header-actions">
         <a href="{{ route('students.create') }}" wire:navigate class="btn btn-primary">+ Tambah Santri</a>
     </div>
@@ -28,12 +28,7 @@
                     <option value="{{ $g }}" {{ request('grade') == $g ? 'selected' : '' }}>Kelas {{ $g }}</option>
                 @endforeach
             </select>
-            <select name="halaqah" class="form-control" style="max-width:200px">
-                <option value="">Semua Halaqah</option>
-                @foreach($halaqahClasses as $h)
-                    <option value="{{ $h }}" {{ request('halaqah') == $h ? 'selected' : '' }}>{{ $h }}</option>
-                @endforeach
-            </select>
+
             <button type="submit" class="btn btn-primary">Filter</button>
             <a href="{{ route('students.index') }}" wire:navigate class="btn btn-secondary">Reset</a>
         </form>
@@ -84,15 +79,15 @@
                     </td>
                     <td>
                         <div class="flex gap-8">
-                            @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
-                            <a href="{{ route('setoran.create', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-primary btn-sm">📝</a>
+                            @if(auth()->check() && auth()->user()->isUstadz() && auth()->user()->teacher && $student->teacher_id === auth()->user()->teacher->id)
+                            <a href="{{ route('setoran.create', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-primary btn-sm" title="Input Setoran">📝</a>
                             @endif
-                            <a href="{{ route('reports.index', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-secondary btn-sm">📊</a>
-                            @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
-                            <a href="{{ route('students.edit', $student) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
+                            <a href="{{ route('reports.index', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-secondary btn-sm" title="Laporan">📊</a>
+                            @if(auth()->check() && auth()->user()->isAdmin())
+                            <a href="{{ route('students.edit', $student) }}" wire:navigate class="btn btn-secondary btn-sm" title="Edit">✏️</a>
                             <form action="{{ route('students.destroy', $student) }}" method="POST" class="delete-form" onsubmit="confirmDelete(event, 'Apakah Anda yakin ingin menghapus data santri {{ $student->name }}?')">
                                 @csrf @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
+                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus">🗑️</button>
                             </form>
                             @endif
                         </div>
@@ -104,7 +99,7 @@
                         <div class="empty-state">
                             <div class="empty-state-icon">👨‍🎓</div>
                             <p>Belum ada data santri. 
-                                @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
+                                @if(auth()->check() && auth()->user()->isAdmin())
                                 <a href="{{ route('students.create') }}" wire:navigate style="color:var(--primary)">Tambah santri pertama</a>
                                 @endif
                             </p>

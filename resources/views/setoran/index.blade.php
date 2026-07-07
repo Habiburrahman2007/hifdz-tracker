@@ -10,7 +10,7 @@
         <h1>Setoran Hafalan</h1>
         <p>Input dan kelola setoran harian santri</p>
     </div>
-    @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
+    @if(auth()->check() && auth()->user()->isUstadz())
     <div class="section-header-actions">
         <a href="{{ route('setoran.create') }}" wire:navigate class="btn btn-primary">+ Input Setoran</a>
     </div>
@@ -101,7 +101,7 @@
                     <td class="text-muted text-sm">{{ $s->notes ? Str::limit($s->notes, 10) : '-' }}</td>
                     <td>
                         <div class="flex gap-8">
-                            @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isUstadz()))
+                            @if(auth()->check() && auth()->user()->isUstadz() && auth()->user()->teacher && $s->teacher_id === auth()->user()->teacher->id)
                             <a href="{{ route('setoran.edit', $s) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
                             <form action="{{ route('setoran.destroy', $s) }}" method="POST" class="delete-form" onsubmit="confirmDelete(event, 'Apakah Anda yakin ingin menghapus data setoran ini?')">
                                 @csrf @method('DELETE')

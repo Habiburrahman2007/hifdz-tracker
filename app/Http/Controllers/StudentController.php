@@ -21,19 +21,14 @@ class StudentController extends Controller
             $query->where('grade', $request->grade);
         }
 
-        if ($request->filled('halaqah')) {
-            $query->where('halaqah_class', $request->halaqah);
-        }
-
         $sortBy = $request->get('sort', 'name');
         $sortDir = $request->get('dir', 'asc');
         $query->orderBy($sortBy, $sortDir);
 
         $students = $query->paginate(25)->withQueryString();
         $teachers = Teacher::orderBy('name')->get();
-        $halaqahClasses = Student::distinct()->pluck('halaqah_class')->sort()->values();
 
-        return view('students.index', compact('students', 'teachers', 'halaqahClasses'));
+        return view('students.index', compact('students', 'teachers'));
     }
 
     public function create()
@@ -54,7 +49,6 @@ class StudentController extends Controller
         ]);
 
         $validated['gender'] = 'male';
-        $validated['halaqah_class'] = '-';
 
         Student::create($validated);
 

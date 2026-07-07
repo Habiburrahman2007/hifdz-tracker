@@ -20,7 +20,6 @@ class DashboardController extends Controller
         // Summary cards
         $totalStudents = Student::count();
         $totalTeachers = Teacher::count();
-        $totalHalaqah = Student::distinct('halaqah_class')->count('halaqah_class');
         $totalLines = Setoran::where('type', 'sabaq')->sum('line_count');
 
         // Top 10 rankings
@@ -92,7 +91,7 @@ class DashboardController extends Controller
 
         return view('dashboard', compact(
             'institutionName', 'logo', 'theme',
-            'totalStudents', 'totalTeachers', 'totalHalaqah', 'totalLines',
+            'totalStudents', 'totalTeachers', 'totalLines',
             'topStudents', 'bottomStudents',
             'dailyCurrentMonth', 'dailyLastMonth',
             'fluencyDistribution', 'gradeStats',
@@ -113,7 +112,6 @@ class DashboardController extends Controller
                     'id' => $student->id,
                     'name' => $student->name,
                     'grade' => $student->grade,
-                    'halaqah_class' => $student->halaqah_class,
                     'teacher' => $student->teacher?->name ?? '-',
                     'total_lines' => $totalLines,
                     'total_pages' => $totalPages,
