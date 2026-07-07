@@ -32,10 +32,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Kelas Halaqah *</label>
-                        <input type="text" name="halaqah_class" class="form-control" value="{{ old('halaqah_class', $student?->halaqah_class) }}" required placeholder="Contoh: Halaqah Al-Fatih">
-                    </div>
+
 
                     <div class="form-group">
                         <label class="form-label">NISN</label>
