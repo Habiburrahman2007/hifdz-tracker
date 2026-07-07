@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('title', 'Data Ustadz/ah')
-@section('page-title', 'Data Ustadz/Ustadzah')
+@section('title', 'Data Ustadz')
+@section('page-title', 'Data Ustadz')
 @section('page-subtitle', 'Manajemen data pengajar tahfidz')
 
 @section('content')
 <div class="section-header fade-in">
     <div class="section-header-icon" style="background: linear-gradient(135deg, #d97706, #f59e0b);">👨‍🏫</div>
     <div class="section-header-text">
-        <h1>Data Ustadz/Ustadzah</h1>
+        <h1>Data Ustadz</h1>
         <p>Total {{ $teachers->total() }} pengajar terdaftar</p>
     </div>
     @if(auth()->check() && auth()->user()->isAdmin())
     <div class="section-header-actions">
-        <a href="{{ route('teachers.create') }}" wire:navigate class="btn btn-primary">+ Tambah Ustadz/ah</a>
+        <a href="{{ route('teachers.create') }}" wire:navigate class="btn btn-primary">+ Tambah Ustadz</a>
     </div>
     @endif
 </div>
@@ -82,7 +82,7 @@
     <div class="card" style="grid-column: 1/-1;">
         <div class="empty-state">
             <div class="empty-state-icon">👨‍🏫</div>
-            <p>Belum ada data ustadz/ah.</p>
+            <p>Belum ada data ustadz.</p>
         </div>
     </div>
     @endforelse

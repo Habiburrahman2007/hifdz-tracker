@@ -46,7 +46,6 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'gender' => 'required|in:male,female',
             'grade' => 'required|integer|between:7,12',
             'halaqah_class' => 'required|string|max:255',
             'nisn' => 'nullable|string|max:20|unique:students,nisn',
@@ -54,6 +53,8 @@ class StudentController extends Controller
             'parent_name' => 'nullable|string|max:255',
             'parent_whatsapp' => 'nullable|string|max:20',
         ]);
+
+        $validated['gender'] = 'male';
 
         Student::create($validated);
 
@@ -70,7 +71,6 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'gender' => 'required|in:male,female',
             'grade' => 'required|integer|between:7,12',
             'halaqah_class' => 'required|string|max:255',
             'nisn' => 'nullable|string|max:20|unique:students,nisn,' . $student->id,

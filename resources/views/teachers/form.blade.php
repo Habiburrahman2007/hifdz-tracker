@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title', ($teacher ? 'Edit' : 'Tambah') . ' Ustadz/ah')
-@section('page-title', $teacher ? 'Edit Data Ustadz/ah' : 'Tambah Ustadz/ah Baru')
+@section('title', ($teacher ? 'Edit' : 'Tambah') . ' Ustadz')
+@section('page-title', $teacher ? 'Edit Data Ustadz' : 'Tambah Ustadz Baru')
 
 @section('content')
 <div style="max-width: 560px;">
     <div class="card fade-in">
         <div class="card-header">
             <div style="font-size:20px;">👨‍🏫</div>
-            <h3>{{ $teacher ? 'Edit: ' . $teacher->name : 'Form Ustadz/ah Baru' }}</h3>
+            <h3>{{ $teacher ? 'Edit: ' . $teacher->name : 'Form Ustadz Baru' }}</h3>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ $teacher ? route('teachers.update', $teacher) : route('teachers.store') }}">

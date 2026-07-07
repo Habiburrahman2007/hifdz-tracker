@@ -31,9 +31,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Ustadz/ah *</label>
+                        <label class="form-label">Ustadz *</label>
                         <select name="teacher_id" class="form-control" id="teacher-select">
-                            <option value="">Pilih Ustadz/ah</option>
+                            <option value="">Pilih Ustadz</option>
                             @foreach($teachers as $teacher)
                                 <option value="{{ $teacher->id }}" {{ old('teacher_id', $setoran?->teacher_id) == $teacher->id ? 'selected' : '' }}>
                                     {{ $teacher->name }}

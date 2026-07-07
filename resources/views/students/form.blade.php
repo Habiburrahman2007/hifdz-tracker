@@ -23,15 +23,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Jenis Kelamin *</label>
-                        <select name="gender" class="form-control" required>
-                            <option value="">Pilih Jenis Kelamin</option>
-                            <option value="male" {{ old('gender', $student?->gender) === 'male' ? 'selected' : '' }}>♂ Laki-laki</option>
-                            <option value="female" {{ old('gender', $student?->gender) === 'female' ? 'selected' : '' }}>♀ Perempuan</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <label class="form-label">Kelas *</label>
                         <select name="grade" class="form-control" required>
                             <option value="">Pilih Kelas</option>
@@ -53,9 +44,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Ustadz/Ustadzah Pembimbing</label>
+                        <label class="form-label">Ustadz Pembimbing</label>
                         <select name="teacher_id" class="form-control">
-                            <option value="">Pilih Ustadz/ah</option>
+                            <option value="">Pilih Ustadz</option>
                             @foreach($teachers as $teacher)
                                 <option value="{{ $teacher->id }}" {{ old('teacher_id', $student?->teacher_id) == $teacher->id ? 'selected' : '' }}>
                                     {{ $teacher->name }}

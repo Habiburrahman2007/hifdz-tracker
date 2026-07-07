@@ -48,9 +48,8 @@
                     <th data-sort>No</th>
                     <th data-sort>Nama Santri</th>
                     <th data-sort>Kelas</th>
-                    <th data-sort>Halaqah</th>
                     <th data-sort>NISN</th>
-                    <th data-sort>Ustadz/ah</th>
+                    <th data-sort>Ustadz</th>
                     <th data-sort>Orang Tua</th>
                     <th data-sort>WhatsApp</th>
                     <th>Aksi</th>
@@ -71,7 +70,6 @@
                         </div>
                     </td>
                     <td><span class="badge badge-primary">Kelas {{ $student->grade }}</span></td>
-                    <td><span class="text-sm">{{ $student->halaqah_class }}</span></td>
                     <td><span class="text-muted text-sm">{{ $student->nisn ?? '-' }}</span></td>
                     <td><span class="text-sm">{{ $student->teacher?->name ?? '-' }}</span></td>
                     <td><span class="text-sm">{{ $student->parent_name ?? '-' }}</span></td>

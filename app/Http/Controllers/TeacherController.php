@@ -52,7 +52,7 @@ class TeacherController extends Controller
             'gender' => 'male', // default gender
         ]);
 
-        return redirect()->route('teachers.index')->with('success', "Data ustadz/ustadzah berhasil ditambahkan. Email: {$user->email}, Password: {$password}");
+        return redirect()->route('teachers.index')->with('success', "Data ustadz berhasil ditambahkan. Email: {$user->email}, Password: {$password}");
     }
 
     public function edit(Teacher $teacher)
@@ -81,7 +81,7 @@ class TeacherController extends Controller
             'whatsapp' => $validated['whatsapp'],
         ]);
 
-        return redirect()->route('teachers.index')->with('success', 'Data ustadz/ustadzah berhasil diperbarui.');
+        return redirect()->route('teachers.index')->with('success', 'Data ustadz berhasil diperbarui.');
     }
 
     public function destroy(Teacher $teacher)
@@ -91,6 +91,6 @@ class TeacherController extends Controller
         if ($user) {
             $user->delete();
         }
-        return redirect()->route('teachers.index')->with('success', 'Data ustadz/ustadzah berhasil dihapus.');
+        return redirect()->route('teachers.index')->with('success', 'Data ustadz berhasil dihapus.');
     }
 }

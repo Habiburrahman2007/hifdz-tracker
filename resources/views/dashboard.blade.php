@@ -14,7 +14,7 @@
     <div class="stat-card fade-in fade-in-2" style="background: linear-gradient(135deg, #059669, #0d9488);">
         <span class="stat-card-icon">👨‍🏫</span>
         <div class="stat-card-value">{{ number_format($totalTeachers) }}</div>
-        <div class="stat-card-label">Total Ustadz/ah</div>
+        <div class="stat-card-label">Total Ustadz</div>
     </div>
     <div class="stat-card fade-in fade-in-3" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
         <span class="stat-card-icon">🕌</span>

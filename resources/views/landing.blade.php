@@ -212,7 +212,7 @@
                     <div class="w-12 h-12 bg-islamic-gold/20 text-islamic-gold rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Dashboard Ustadz/Ustadzah</h3>
+                    <h3 class="text-xl font-bold text-white mb-3">Dashboard Ustadz</h3>
                     <p class="text-gray-300">Interface sederhana untuk memudahkan guru memonitor hafalan santrinya masing-masing.</p>
                 </div>
                 
@@ -246,7 +246,7 @@
                     <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
                         <div class="md:w-5/12 text-center md:text-right mb-6 md:mb-0">
                             <h3 class="text-xl font-bold text-gray-900 mb-2">Daftarkan Pesantren dan Pengajar</h3>
-                            <p class="text-gray-600">Mulai dengan membuat akun untuk pesantren dan ustadz/ustadzah.</p>
+                            <p class="text-gray-600">Mulai dengan membuat akun untuk pesantren dan ustadz.</p>
                         </div>
                         <div class="w-12 h-12 bg-white border-4 border-islamic-green rounded-full flex items-center justify-center relative z-10 font-bold text-islamic-green shadow-sm shadow-islamic-green/20 group-hover:bg-islamic-green group-hover:text-white transition-colors">1</div>
                         <div class="md:w-5/12 hidden md:block"></div>
