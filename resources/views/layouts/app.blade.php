@@ -805,6 +805,7 @@
         }
     </style>
     @stack('styles')
+    @livewireStyles
 </head>
 <body>
     <div class="app-wrapper">
@@ -892,7 +893,15 @@
                 <p>@yield('page-subtitle', 'Selamat datang di Sistem Manajemen Tahfidz')</p>
             </div>
             <div class="topbar-date">
-                📅 {{ now()->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
+                @auth
+                    @if(auth()->user()->isAdmin())
+                        👋 Selamat Datang, Admin {{ auth()->user()->name }}
+                    @elseif(auth()->user()->isUstadz())
+                        👋 Selamat Datang, Ustadz {{ auth()->user()->name }}
+                    @else
+                        👋 Selamat Datang, Pak/Bu {{ auth()->user()->name }}
+                    @endif
+                @endauth
             </div>
         </header>
 
@@ -1102,6 +1111,6 @@
         });
     </script>
     @stack('scripts')
-    @livewireScriptConfig
+    @livewireScripts
 </body>
 </html>

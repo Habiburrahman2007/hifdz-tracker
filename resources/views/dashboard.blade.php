@@ -52,12 +52,7 @@
                             </div>
                         </td>
                         <td>
-                            <div class="flex items-center gap-8">
-                                <div class="avatar avatar-male">{{ substr($student['name'], 0, 1) }}</div>
-                                <div>
-                                    <div class="fw-700" style="font-size:13px">{{ $student['name'] }}</div>
-                                </div>
-                            </div>
+                            <div class="fw-700" style="font-size:13px">{{ $student['name'] }}</div>
                         </td>
                         <td><span class="badge badge-primary">Kelas {{ $student['grade'] }}</span></td>
                         <td>
@@ -100,12 +95,7 @@
                     <tr>
                         <td><div class="rank-badge rank-n" style="background:#fee2e2;color:#dc2626;">{{ $totalStudents - $i }}</div></td>
                         <td>
-                            <div class="flex items-center gap-8">
-                                <div class="avatar avatar-male" style="background:#fee2e2;color:#dc2626;">{{ substr($student['name'], 0, 1) }}</div>
-                                <div>
-                                    <div class="fw-700" style="font-size:13px">{{ $student['name'] }}</div>
-                                </div>
-                            </div>
+                            <div class="fw-700" style="font-size:13px">{{ $student['name'] }}</div>
                         </td>
                         <td><span class="badge badge-warning">Kelas {{ $student['grade'] }}</span></td>
                         <td>

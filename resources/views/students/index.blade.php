@@ -55,14 +55,7 @@
                 <tr>
                     <td>{{ $students->firstItem() + $i }}</td>
                     <td>
-                        <div class="flex items-center gap-8">
-                            <div class="avatar {{ $student->gender === 'male' ? 'avatar-male' : 'avatar-female' }}">
-                                {{ substr($student->name, 0, 1) }}
-                            </div>
-                            <div>
-                                <div class="fw-700">{{ $student->name }}</div>
-                            </div>
-                        </div>
+                        <div class="fw-700">{{ $student->name }}</div>
                     </td>
                     <td><span class="badge badge-primary">Kelas {{ $student->grade }}</span></td>
                     <td><span class="text-muted text-sm">{{ $student->nisn ?? '-' }}</span></td>

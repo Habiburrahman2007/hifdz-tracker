@@ -34,9 +34,6 @@
     <div class="card" style="overflow:visible;">
         <div class="card-body">
             <div class="flex items-center gap-12 mb-16">
-                <div class="avatar {{ $teacher->gender === 'male' ? 'avatar-male' : 'avatar-female' }}" style="width:56px;height:56px;font-size:22px;border-radius:14px;">
-                    {{ substr($teacher->name, 0, 1) }}
-                </div>
                 <div>
                     <div class="fw-700" style="font-size:15px">{{ $teacher->name }}</div>
                     <span class="badge {{ $teacher->gender === 'male' ? 'badge-info' : '' }}" style="{{ $teacher->gender === 'female' ? 'background:#fce7f3;color:#be185d' : '' }}">

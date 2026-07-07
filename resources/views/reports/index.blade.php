@@ -58,10 +58,7 @@
     <!-- Profile Card -->
     <div class="card fade-in fade-in-1">
         <div class="card-body text-center">
-            <div class="avatar {{ $student->gender === 'male' ? 'avatar-male' : 'avatar-female' }}" style="width:72px;height:72px;font-size:28px;border-radius:18px;margin:0 auto 12px;">
-                {{ substr($student->name, 0, 1) }}
-            </div>
-            <div class="fw-700" style="font-size:17px;margin-bottom:4px">{{ $student->name }}</div>
+            <div class="fw-700" style="font-size:17px;margin-bottom:4px;margin-top:12px;">{{ $student->name }}</div>
             <div class="flex gap-8 mb-16" style="justify-content:center;flex-wrap:wrap">
                 <span class="badge badge-primary">Kelas {{ $student->grade }}</span>
                 <span class="badge badge-secondary">{{ $student->teacher?->name ?? 'Belum ada' }}</span>

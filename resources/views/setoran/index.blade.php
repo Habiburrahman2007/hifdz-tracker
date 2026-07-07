@@ -73,13 +73,8 @@
                         <div class="fw-700" style="font-size:13px">{{ $s->date->format('d/m/y') }}</div>
                     </td>
                     <td>
-                        <div class="flex items-center gap-8">
-                            <div class="avatar {{ $s->student->gender === 'male' ? 'avatar-male' : 'avatar-female' }}">{{ substr($s->student->name, 0, 1) }}</div>
-                            <div>
-                                <div class="fw-700" style="font-size:13px">{{ $s->student->name }}</div>
-                                <div class="text-xs text-muted">Kelas {{ $s->student->grade }}</div>
-                            </div>
-                        </div>
+                        <div class="fw-700" style="font-size:13px">{{ $s->student->name }}</div>
+                        <div class="text-xs text-muted">Kelas {{ $s->student->grade }}</div>
                     </td>
                     <td>
                         @php $typeColors = ['sabaq'=>'background:#dbeafe;color:#1d4ed8','sabqi'=>'background:#d1fae5;color:#065f46','manzil'=>'background:#fef3c7;color:#92400e']; @endphp
