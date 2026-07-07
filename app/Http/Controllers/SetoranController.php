@@ -25,28 +25,25 @@ class SetoranController extends Controller
             }
         }
 
-        if ($request->filled('student_id')) {
-            $query->where('student_id', $request->student_id);
+        if ($request->filled('teacher_id') && !$user->isUstadz()) {
+            $query->where('teacher_id', $request->teacher_id);
+        }
+        if ($request->filled('grade')) {
+            $query->whereHas('student', function ($q) use ($request) {
+                $q->where('grade', $request->grade);
+            });
         }
         if ($request->filled('type')) {
             $query->where('type', $request->type);
         }
-        if ($request->filled('date_from')) {
-            $query->whereDate('date', '>=', $request->date_from);
-        }
-        if ($request->filled('date_to')) {
-            $query->whereDate('date', '<=', $request->date_to);
+        if ($request->filled('date')) {
+            $query->whereDate('date', $request->date);
         }
 
         $setorans = $query->orderBy('date', 'desc')->orderBy('id', 'desc')->paginate(30)->withQueryString();
-        
-        if ($user->isUstadz() && $user->teacher) {
-            $students = Student::where('teacher_id', $user->teacher->id)->orderBy('name')->get();
-        } else {
-            $students = Student::orderBy('name')->get();
-        }
+        $teachers = Teacher::orderBy('name')->get();
 
-        return view('setoran.index', compact('setorans', 'students'));
+        return view('setoran.index', compact('setorans', 'teachers'));
     }
 
     public function create(Request $request)

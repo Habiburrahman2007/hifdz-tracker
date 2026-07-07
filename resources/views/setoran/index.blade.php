@@ -21,20 +21,27 @@
 <div class="card mb-20 fade-in fade-in-1">
     <div class="card-body" style="padding:16px 22px;">
         <form method="GET" action="{{ route('setoran.index') }}" class="filter-bar">
-            <select name="student_id" class="form-control" style="max-width:220px">
-                <option value="">Semua Santri</option>
-                @foreach($students as $student)
-                    <option value="{{ $student->id }}" {{ request('student_id') == $student->id ? 'selected' : '' }}>{{ $student->name }}</option>
+            <select name="grade" class="form-control" style="max-width:150px">
+                <option value="">Semua Kelas</option>
+                @foreach(range(7, 12) as $g)
+                    <option value="{{ $g }}" {{ request('grade') == $g ? 'selected' : '' }}>Kelas {{ $g }}</option>
                 @endforeach
             </select>
+            @if(auth()->check() && auth()->user()->isAdmin())
+            <select name="teacher_id" class="form-control" style="max-width:200px">
+                <option value="">Semua Ustadz</option>
+                @foreach($teachers as $t)
+                    <option value="{{ $t->id }}" {{ request('teacher_id') == $t->id ? 'selected' : '' }}>{{ $t->name }}</option>
+                @endforeach
+            </select>
+            @endif
             <select name="type" class="form-control" style="max-width:150px">
                 <option value="">Semua Jenis</option>
                 <option value="sabaq" {{ request('type') === 'sabaq' ? 'selected' : '' }}>📗 Sabaq</option>
                 <option value="sabqi" {{ request('type') === 'sabqi' ? 'selected' : '' }}>📘 Sabqi</option>
                 <option value="manzil" {{ request('type') === 'manzil' ? 'selected' : '' }}>📙 Manzil</option>
             </select>
-            <input type="date" name="date_from" class="form-control" value="{{ request('date_from') }}" style="max-width:160px">
-            <input type="date" name="date_to" class="form-control" value="{{ request('date_to') }}" style="max-width:160px">
+            <input type="date" name="date" class="form-control" value="{{ request('date') }}" style="max-width:160px">
             <button type="submit" class="btn btn-primary">Filter</button>
             <a href="{{ route('setoran.index') }}" wire:navigate class="btn btn-secondary">Reset</a>
         </form>
