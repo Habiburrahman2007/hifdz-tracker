@@ -251,9 +251,13 @@
 
     <!-- Login Loader -->
     <div id="login-loader" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease;">
-        <div style="position: relative; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; transform: scale(0.9); transition: transform 0.2s ease;" id="login-loader-content">
+        <div style="position: relative; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; transform: scale(0.9); transition: transform 0.2s ease;" id="login-loader-content">
             <div style="position: absolute; inset: 0; border: 4px solid #e2e8f0; border-top-color: var(--primary, #059669); border-radius: 50%; animation: spin 1s linear infinite;"></div>
-            <div style="font-size: 32px; z-index: 1;">🔑</div>
+            @if($logo)
+                <img src="{{ Storage::url($logo) }}" alt="Logo" style="width:75px;height:75px;object-fit:cover;border-radius:50%;z-index:1;">
+            @else
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width:75px;height:75px;object-fit:contain;border-radius:50%;z-index:1;">
+            @endif
         </div>
     </div>
 

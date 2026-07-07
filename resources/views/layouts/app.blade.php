@@ -905,11 +905,16 @@
             </div>
         </header>
 
+        @php $settingLogo = \App\Models\Setting::get('logo', ''); @endphp
         <!-- Page Loader (SPA) -->
         <div id="page-loader" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease;">
-            <div style="position: relative; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; transform: scale(0.9); transition: transform 0.2s ease;" class="loader-content">
+            <div style="position: relative; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; transform: scale(0.9); transition: transform 0.2s ease;" class="loader-content">
                 <div style="position: absolute; inset: 0; border: 4px solid #e2e8f0; border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 50%;">
+                @if($settingLogo)
+                    <img src="{{ Storage::url($settingLogo) }}" alt="Logo" style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;">
+                @else
+                    <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 75px; height: 75px; object-fit: contain; border-radius: 50%;">
+                @endif
             </div>
         </div>
 
