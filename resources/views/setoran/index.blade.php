@@ -101,7 +101,7 @@
                     <td class="text-muted text-sm">{{ $s->notes ? Str::limit($s->notes, 10) : '-' }}</td>
                     <td>
                         <div class="flex gap-8">
-                            @if(auth()->check() && auth()->user()->isUstadz() && auth()->user()->teacher && $s->teacher_id === auth()->user()->teacher->id)
+                            @if(auth()->check() && auth()->user()->isUstadz() && auth()->user()->teacher && $s->teacher_id == auth()->user()->teacher->id)
                             <a href="{{ route('setoran.edit', $s) }}" wire:navigate class="btn btn-secondary btn-sm">✏️</a>
                             <form action="{{ route('setoran.destroy', $s) }}" method="POST" class="delete-form" onsubmit="confirmDelete(event, 'Apakah Anda yakin ingin menghapus data setoran ini?')">
                                 @csrf @method('DELETE')

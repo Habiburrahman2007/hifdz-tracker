@@ -66,4 +66,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(Teacher::class);
     }
+
+    public function getTeacherAttribute()
+    {
+        $teacher = $this->hasOne(Teacher::class)->getResults();
+        if (!$teacher) {
+            $teacher = Teacher::where('name', $this->name)->first();
+        }
+        return $teacher;
+    }
 }

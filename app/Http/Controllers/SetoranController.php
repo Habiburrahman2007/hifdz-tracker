@@ -14,6 +14,16 @@ class SetoranController extends Controller
     public function index(Request $request)
     {
         $query = Setoran::with(['student', 'teacher']);
+        $user = auth()->user();
+
+        if ($user->isUstadz()) {
+            $teacher = $user->teacher;
+            if ($teacher) {
+                $query->where('teacher_id', $teacher->id);
+            } else {
+                $query->whereRaw('1 = 0');
+            }
+        }
 
         if ($request->filled('student_id')) {
             $query->where('student_id', $request->student_id);
@@ -29,7 +39,12 @@ class SetoranController extends Controller
         }
 
         $setorans = $query->orderBy('date', 'desc')->orderBy('id', 'desc')->paginate(30)->withQueryString();
-        $students = Student::orderBy('name')->get();
+        
+        if ($user->isUstadz() && $user->teacher) {
+            $students = Student::where('teacher_id', $user->teacher->id)->orderBy('name')->get();
+        } else {
+            $students = Student::orderBy('name')->get();
+        }
 
         return view('setoran.index', compact('setorans', 'students'));
     }
@@ -50,7 +65,7 @@ class SetoranController extends Controller
 
         if ($selectedStudentId) {
             $student = Student::find($selectedStudentId);
-            if (!$student || $student->teacher_id !== $teacher->id) {
+            if (!$student || $student->teacher_id != $teacher->id) {
                 abort(403, 'Santri ini bukan di bawah bimbingan Anda.');
             }
         }
@@ -85,7 +100,7 @@ class SetoranController extends Controller
         ]);
 
         $student = Student::find($validated['student_id']);
-        if (!$student || $student->teacher_id !== $teacher->id) {
+        if (!$student || $student->teacher_id != $teacher->id) {
             abort(403, 'Santri ini bukan di bawah bimbingan Anda.');
         }
 
@@ -101,7 +116,7 @@ class SetoranController extends Controller
         $user = auth()->user();
         $teacher = $user->teacher;
 
-        if (!$teacher || $setoran->teacher_id !== $teacher->id) {
+        if (!$teacher || $setoran->teacher_id != $teacher->id) {
             abort(403, 'Anda tidak dapat mengubah setoran santri yang bukan di bawah bimbingan Anda.');
         }
 
@@ -117,7 +132,7 @@ class SetoranController extends Controller
         $user = auth()->user();
         $teacher = $user->teacher;
 
-        if (!$teacher || $setoran->teacher_id !== $teacher->id) {
+        if (!$teacher || $setoran->teacher_id != $teacher->id) {
             abort(403, 'Anda tidak memiliki akses.');
         }
 
@@ -137,7 +152,7 @@ class SetoranController extends Controller
         ]);
 
         $student = Student::find($validated['student_id']);
-        if (!$student || $student->teacher_id !== $teacher->id) {
+        if (!$student || $student->teacher_id != $teacher->id) {
             abort(403, 'Santri ini bukan di bawah bimbingan Anda.');
         }
 
@@ -153,7 +168,7 @@ class SetoranController extends Controller
         $user = auth()->user();
         $teacher = $user->teacher;
 
-        if (!$teacher || $setoran->teacher_id !== $teacher->id) {
+        if (!$teacher || $setoran->teacher_id != $teacher->id) {
             abort(403, 'Anda tidak memiliki akses.');
         }
 

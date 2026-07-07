@@ -79,7 +79,7 @@
                     </td>
                     <td>
                         <div class="flex gap-8">
-                            @if(auth()->check() && auth()->user()->isUstadz() && auth()->user()->teacher && $student->teacher_id === auth()->user()->teacher->id)
+                            @if(auth()->check() && auth()->user()->isUstadz() && auth()->user()->teacher && $student->teacher_id == auth()->user()->teacher->id)
                             <a href="{{ route('setoran.create', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-primary btn-sm" title="Input Setoran">📝</a>
                             @endif
                             <a href="{{ route('reports.index', ['student_id' => $student->id]) }}" wire:navigate class="btn btn-secondary btn-sm" title="Laporan">📊</a>
