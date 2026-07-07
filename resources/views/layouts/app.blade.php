@@ -850,6 +850,14 @@
         </nav>
 
         <div class="sidebar-footer">
+            @auth
+            <form action="{{ route('logout') }}" method="POST" style="margin-bottom: 12px;">
+                @csrf
+                <button type="submit" class="btn btn-secondary w-full" style="justify-content: center; background: rgba(255,255,255,0.1); color: var(--nav-text); border: 1px solid rgba(255,255,255,0.1);">
+                    🚪 Logout
+                </button>
+            </form>
+            @endauth
             <p>&copy; {{ date('Y') }} {{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</p>
         </div>
     </aside>
