@@ -114,11 +114,11 @@
                 <div class="form-group">
                     <label class="form-label">Nilai Kelancaran (Fluency Score)</label>
                     <div class="score-widget">
-                        <button type="button" class="score-btn score-btn-minus" onclick="adjustScore(-5)">−5</button>
+                        <button type="button" class="score-btn score-btn-minus" onclick="adjustScore(-1)">−1</button>
                         <div class="score-display" id="score-display">{{ old('fluency_score', $setoran?->fluency_score ?? 100) }}</div>
-                        <button type="button" class="score-btn score-btn-plus" onclick="adjustScore(5)">+5</button>
+                        <button type="button" class="score-btn score-btn-plus" onclick="adjustScore(1)">+1</button>
                         <input type="hidden" name="fluency_score" id="fluency-score" value="{{ old('fluency_score', $setoran?->fluency_score ?? 100) }}">
-                        <span class="text-muted text-sm">Default: 100, kurangi 5 per kesalahan</span>
+                        <span class="text-muted text-sm">Default: 100, kurangi 1 per kesalahan</span>
                     </div>
                 </div>
 

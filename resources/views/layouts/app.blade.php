@@ -104,10 +104,13 @@
             font-family: var(--font);
             background: #f1f5f9;
             color: #1e293b;
-            display: flex;
-            min-height: 100vh;
             font-size: 14px;
             line-height: 1.6;
+        }
+        .app-wrapper {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
         }
 
         /* ===== SIDEBAR ===== */
@@ -761,10 +764,10 @@
         .empty-state-icon { font-size: 48px; margin-bottom: 12px; }
         .empty-state p { font-size: 14px; }
     </style>
-    @livewireStyles
     @stack('styles')
 </head>
 <body>
+    <div class="app-wrapper">
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-logo">
@@ -826,7 +829,7 @@
         </nav>
 
         <div class="sidebar-footer">
-            <p>© 2025 Darul Ilmi v1.0</p>
+            <p>&copy; {{ date('Y') }} {{ \App\Models\Setting::get('institution_name', 'Pesantren Darul Ilmi') }}</p>
         </div>
     </aside>
 
@@ -861,6 +864,7 @@
             @yield('content')
         </div>
     </main>
+    </div> <!-- /.app-wrapper -->
 
     <script>
         // Mobile menu toggle visibility
@@ -901,7 +905,6 @@
             });
         });
     </script>
-    @livewireScripts
     @stack('scripts')
 </body>
 </html>
