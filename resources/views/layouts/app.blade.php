@@ -711,6 +711,25 @@
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .page-content { padding: 16px; }
             .topbar-title p { display: none; }
+            
+            .filter-bar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .filter-bar input[name="search"] {
+                grid-column: 1 / -1;
+                max-width: 100% !important;
+            }
+            .filter-bar select, .filter-bar input[type="date"] {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            .filter-bar .btn {
+                grid-column: 1 / -1;
+                justify-content: center;
+                width: 100%;
+            }
         }
 
         /* ===== ANIMATIONS ===== */
