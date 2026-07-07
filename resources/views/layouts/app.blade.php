@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    @livewireStyles
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         /* ===== CSS VARIABLES / THEME ENGINE ===== */
@@ -785,6 +784,21 @@
         }
         .empty-state-icon { font-size: 48px; margin-bottom: 12px; }
         .empty-state p { font-size: 14px; }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            @page { margin: 0; }
+            body { 
+                padding: 1.5cm; 
+                background: #fff !important;
+            }
+            .sidebar, .topbar, .filter-bar, .section-header-actions, #logout-modal { display: none !important; }
+            .app-wrapper { margin: 0 !important; }
+            .main { margin-left: 0 !important; margin-top: 0 !important; width: 100% !important; padding: 0 !important; }
+            .grid-3 { grid-template-columns: 1fr !important; }
+            .card { box-shadow: none !important; border: 1px solid #e2e8f0 !important; page-break-inside: avoid; }
+            .section-header { margin-bottom: 24px !important; }
+        }
     </style>
     @stack('styles')
 </head>
@@ -1022,6 +1036,5 @@
         });
     </script>
     @stack('scripts')
-    @livewireScripts
 </body>
 </html>
