@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('gender', ['male', 'female'])->default('male');
             $table->integer('grade')->between(7, 12);
             $table->string('halaqah_class');
             $table->string('nisn')->nullable()->unique();

@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('gender', ['male', 'female'])->default('male');
             $table->string('whatsapp')->nullable();
             $table->string('alumnus_of')->nullable();
             $table->timestamps();
