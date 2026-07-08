@@ -11,7 +11,6 @@ class Student extends Model
 
     protected $fillable = [
         'name',
-        'gender',
         'grade',
         'nisn',
         'teacher_id',
@@ -27,11 +26,6 @@ class Student extends Model
     public function setorans()
     {
         return $this->hasMany(Setoran::class);
-    }
-
-    public function getGenderLabelAttribute(): string
-    {
-        return $this->gender === 'male' ? 'Laki-laki' : 'Perempuan';
     }
 
     /**

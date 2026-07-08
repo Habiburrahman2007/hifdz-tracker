@@ -49,7 +49,6 @@ class TeacherController extends Controller
             'name' => $validated['name'],
             'whatsapp' => $validated['whatsapp'],
             'user_id' => $user->id,
-            'gender' => 'male', // default gender
         ]);
 
         return redirect()->route('teachers.index')->with('success', "Data ustadz berhasil ditambahkan. Email: {$user->email}, Password: {$password}");

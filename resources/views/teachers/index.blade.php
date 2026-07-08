@@ -36,9 +36,6 @@
             <div class="flex items-center gap-12 mb-16">
                 <div>
                     <div class="fw-700" style="font-size:15px">{{ $teacher->name }}</div>
-                    <span class="badge {{ $teacher->gender === 'male' ? 'badge-info' : '' }}" style="{{ $teacher->gender === 'female' ? 'background:#fce7f3;color:#be185d' : '' }}">
-                        {{ $teacher->gender === 'male' ? '♂ Laki-laki' : '♀ Perempuan' }}
-                    </span>
                 </div>
             </div>
 

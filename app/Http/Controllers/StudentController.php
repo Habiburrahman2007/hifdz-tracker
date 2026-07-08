@@ -48,8 +48,6 @@ class StudentController extends Controller
             'parent_whatsapp' => 'nullable|string|max:20',
         ]);
 
-        $validated['gender'] = 'male';
-
         Student::create($validated);
 
         return redirect()->route('students.index')->with('success', 'Data santri berhasil ditambahkan.');

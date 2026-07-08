@@ -11,7 +11,6 @@ class Teacher extends Model
 
     protected $fillable = [
         'name',
-        'gender',
         'whatsapp',
         'alumnus_of',
         'user_id',
@@ -30,10 +29,5 @@ class Teacher extends Model
     public function setorans()
     {
         return $this->hasMany(Setoran::class);
-    }
-
-    public function getGenderLabelAttribute(): string
-    {
-        return $this->gender === 'male' ? 'Laki-laki' : 'Perempuan';
     }
 }

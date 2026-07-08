@@ -40,11 +40,11 @@ class DatabaseSeeder extends Seeder
     private function seedTeachers(): array
     {
         $teacherData = [
-            ['name' => 'Ustadz Ahmad Fauzi', 'gender' => 'male', 'whatsapp' => '081234567001', 'alumnus_of' => 'Pesantren Al-Quran Bandung'],
-            ['name' => 'Ustadz Ridwan Hasan', 'gender' => 'male', 'whatsapp' => '081234567002', 'alumnus_of' => 'Pesantren Tahfidz Surabaya'],
-            ['name' => 'Ustadzah Siti Aminah', 'gender' => 'female', 'whatsapp' => '081234567003', 'alumnus_of' => 'Pesantren Ar-Risalah Solo'],
-            ['name' => 'Ustadz Muhammad Yusuf', 'gender' => 'male', 'whatsapp' => '081234567004', 'alumnus_of' => 'Pesantren Darul Ulum Jombang'],
-            ['name' => 'Ustadzah Fatimah Zahra', 'gender' => 'female', 'whatsapp' => '081234567005', 'alumnus_of' => 'Pesantren Al-Munawwir Yogyakarta'],
+            ['name' => 'Ustadz Ahmad Fauzi', 'whatsapp' => '081234567001', 'alumnus_of' => 'Pesantren Al-Quran Bandung'],
+            ['name' => 'Ustadz Ridwan Hasan', 'whatsapp' => '081234567002', 'alumnus_of' => 'Pesantren Tahfidz Surabaya'],
+            ['name' => 'Ustadzah Siti Aminah', 'whatsapp' => '081234567003', 'alumnus_of' => 'Pesantren Ar-Risalah Solo'],
+            ['name' => 'Ustadz Muhammad Yusuf', 'whatsapp' => '081234567004', 'alumnus_of' => 'Pesantren Darul Ulum Jombang'],
+            ['name' => 'Ustadzah Fatimah Zahra', 'whatsapp' => '081234567005', 'alumnus_of' => 'Pesantren Al-Munawwir Yogyakarta'],
         ];
 
         $teachers = [];
@@ -83,13 +83,11 @@ class DatabaseSeeder extends Seeder
 
         for ($i = 0; $i < $maleCount; $i++) {
             $name = $maleNames[$i];
-            $gender = 'male';
             $grade = $grades[$i % count($grades)];
             $teacher = $teachers[$i % count($teachers)];
 
             $students[] = Student::create([
                 'name' => $name,
-                'gender' => $gender,
                 'grade' => $grade,
                 'nisn' => '10' . str_pad($i + 1, 8, '0', STR_PAD_LEFT),
                 'teacher_id' => $teacher->id,
